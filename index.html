@@ -4,7 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naya Market | Épicerie Orientale Saint-Jean-de-Védas</title>
-  <meta name="description" content="Naya Market, votre épicerie orientale à Saint-Jean-de-Védas. Alimentation, pâtisseries et traiteur couscous/tajines.">
+  <meta name="description" content="Découvrez Naya Market, épicerie orientale à Saint-Jean-de-Védas : épices, produits d’épicerie, pâtisseries orientales et plats traiteur sur commande.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#451a03">
+  <link rel="canonical" href="https://casamtp.github.io/Naya/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Naya Market">
+  <meta property="og:title" content="Naya Market | Épicerie orientale à Saint-Jean-de-Védas">
+  <meta property="og:description" content="Épicerie orientale, pâtisseries et traiteur à Saint-Jean-de-Védas.">
+  <meta property="og:url" content="https://casamtp.github.io/Naya/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GroceryStore",
+    "name": "Naya Market",
+    "url": "https://casamtp.github.io/Naya/",
+    "telephone": "+33767934154",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Avenue de la Libération",
+      "postalCode": "34430",
+      "addressLocality": "Saint-Jean-de-Védas",
+      "addressCountry": "FR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/nayamarket34/",
+      "https://www.facebook.com/profile.php?id=61582394892234"
+    ]
+  }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -383,26 +413,13 @@
     </div>
     <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
      <h2 class="text-3xl font-extrabold text-primary mb-6 text-center">⭐ Avis de nos Clients</h2>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
-       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
-       <p class="italic text-gray-600 mb-2">"Super épicerie, les cornes de gazelle sont top !"</p>
-       <span class="font-bold text-primary">- Sarah M.</span>
-      </div>
-      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
-       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
-       <p class="italic text-gray-600 mb-2">"Couscous excellent commandé pour le week-end."</p>
-       <span class="font-bold text-primary">- Thomas R.</span>
-      </div>
-      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
-       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
-       <p class="italic text-gray-600 mb-2">"Très pratique à 2 min du tram."</p>
-       <span class="font-bold text-primary">- Karima B.</span>
-      </div>
+     <div class="max-w-2xl mx-auto mb-8 rounded-xl border border-amber-200 bg-amber-50 p-6 text-center">
+      <p class="font-semibold text-primary mb-2">Les avis clients sont en cours de collecte.</p>
+      <p class="text-sm text-gray-700">Nous publierons ici les témoignages authentiques après vérification. Vous pouvez nous transmettre votre retour via le formulaire ci-dessous.</p>
      </div>
      <!-- Formulaire Avis -->
      <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-xl mx-auto space-y-4 bg-amber-50 p-6 rounded-2xl">
-      <h3 class="font-bold text-primary text-center">Laissez votre recommandation</h3>
+      <h3 class="font-bold text-primary text-center">Proposer un avis (publication après validation)</h3>
       <input type="hidden" name="_subject" value="Avis Naya Market">
       <div class="grid grid-cols-2 gap-4">
        <input type="text" name="prenom" placeholder="Votre Prénom" required class="w-full p-2 bg-white rounded border text-sm"> <select name="note" class="w-full p-2 bg-white rounded border text-sm"> <option value="5">⭐⭐⭐⭐⭐ Parfait</option> <option value="4">⭐⭐⭐⭐ Très bien</option> </select>
@@ -501,7 +518,7 @@ function nmTomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `${d.ge
 const nmDateInput=document.getElementById('nmPickupDate'); if(nmDateInput){nmDateInput.min=nmTomorrow();nmDateInput.value=nmTomorrow()}
 function nmSlug(name){return name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 async function nmLoadCatalog(){if(!nmDb)return;const {data,error}=await nmDb.from('products').select('id,slug,name,category,price_cents,stock_quantity,is_active').eq('is_active',true);if(error){console.error('Supabase catalogue:',error);return}Object.keys(nmCatalog).forEach(k=>delete nmCatalog[k]);data.forEach(p=>{const kind=['tajine','couscous','patisserie'].includes(p.category)?'food':'grocery';const slug=p.slug||nmSlug(p.name);nmCatalog[slug]={...p,slug,price:p.price_cents/100,stock:p.stock_quantity,active:p.is_active,kind}});nmRender();document.querySelectorAll('.nm-add').forEach(b=>{const m=b.getAttribute('onclick')?.match(/nmAdd\('([^']+)'/);if(m){const p=nmCatalog[m[1]];if(p){b.disabled=p.stock<=0;b.textContent=p.stock<=0?'Épuisé':'Ajouter au panier';b.title=`Stock disponible : ${p.stock}`}}})}
-async function nmAdd(id,name,price,kind){if(!nmDb){alert('La base de données n’est pas configurée.');return}if(!nmCatalog[id])await nmLoadCatalog();const p=nmCatalog[id];if(!p||!p.active){alert('Article absent du catalogue Supabase. Vérifiez le nom du produit.');return}const q=nmCart[id]?.qty||0;if(p.stock<=q){alert(p.stock<=0?'Article épuisé.':`Stock disponible : ${p.stock}`);return}if(nmCart[id])nmCart[id].qty++;else nmCart[id]={id:p.id,slug:id,name:p.name,price:Number(p.price),kind:p.kind,qty:1};nmRender()}
+async function nmAdd(id,name,price,kind){if(!nmDb){alert('La base de données n’est pas configurée.');return}if(!nmCatalog[id])await nmLoadCatalog();const p=nmCatalog[id];if(!p||!p.active){alert('Article absent du catalogue Supabase. Vérifiez le nom du produit.');return}const q=nmCart[id]?.qty||0;if(p.stock<=q){alert(p.stock<=0?'Article épuisé.':`Stock disponible : ${p.stock}`);return}const currentKinds=new Set(Object.values(nmCart).map(item=>item.kind));if(currentKinds.size&&!currentKinds.has(p.kind)){alert('Les produits d’épicerie et les pâtisseries/plats doivent faire l’objet de commandes séparées. Terminez ou videz le panier avant de changer de catégorie.');return}if(nmCart[id])nmCart[id].qty++;else nmCart[id]={id:p.id,slug:id,name:p.name,price:Number(p.price),kind:p.kind,qty:1};nmRender();nmModeChanged()}
 function nmQty(id,d){if(!nmCart[id])return;const next=nmCart[id].qty+d;const slug=nmCart[id].slug;if(next>(nmCatalog[slug]?.stock??0)){alert('Stock insuffisant.');return}nmCart[id].qty=next;if(nmCart[id].qty<1)delete nmCart[id];nmRender()}
 function nmOpen(){nmDrawer.classList.add('open');nmOverlay.classList.add('open')}
 function nmClose(){nmDrawer.classList.remove('open');nmOverlay.classList.remove('open')}
