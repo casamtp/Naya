@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="fr">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naya Market | Épicerie Orientale Saint-Jean-de-Védas</title>
+  <meta name="description" content="Naya Market, votre épicerie orientale à Saint-Jean-de-Védas. Alimentation, pâtisseries et traiteur couscous/tajines.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#451a03',
+                        secondary: '#d97706',
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        .oriental-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .group:hover .dropdown-menu { display: block; }
+        .dropdown-menu { display: none; }
+    
+.nm-add{display:inline-block;background:#d97706;color:#fff;border-radius:.6rem;padding:.45rem .7rem;font-size:.75rem;font-weight:700;margin:.35rem 0}.nm-fab{position:fixed;right:16px;bottom:16px;z-index:70;background:#451a03;color:#fff;border-radius:999px;padding:.85rem 1rem;font-weight:800;box-shadow:0 8px 24px #0003}.nm-overlay{position:fixed;inset:0;background:#0007;z-index:89;display:none}.nm-overlay.open{display:block}.nm-drawer{position:fixed;right:0;top:0;bottom:0;width:min(460px,100vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .2s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0002}.nm-drawer.open{transform:translateX(0)}.nm-row{padding:.8rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:.6rem}.nm-qty button{background:#fef3c7;border-radius:5px;padding:.15rem .5rem;font-weight:bold}.nm-info{padding:.8rem;border-radius:.7rem;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.8rem}
+
+.nm-fab.nm-added{transform:scale(1.04)}
+</style>
+ </head>
+ <body class="bg-gray-50 text-gray-800 font-['Inter'] antialiased min-h-screen flex flex-col justify-between">
+  <!-- Top Bar -->
+  <div class="bg-gray-900 text-gray-300 text-xs py-2 hidden md:block oriental-pattern">
+   <div class="container mx-auto px-4 flex justify-between items-center relative z-10">
+    <div>
+     <i class="fa-solid fa-location-dot mr-1 text-secondary"></i> 12 Av. de la Libération, 34430 Saint-Jean-de-Védas
+    </div>
+    <div class="flex space-x-4 items-center">
+     <span><i class="fa-solid fa-phone mr-1 text-secondary"></i> 07 67 93 41 54</span> <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="hover:text-secondary transition"><i class="fa-brands fa-facebook mr-1 text-blue-400"></i> Facebook</a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="hover:text-secondary transition"><i class="fa-brands fa-instagram mr-1 text-pink-400"></i> Instagram</a>
+    </div>
+   </div>
+  </div>
+  <!-- Header / Navbar -->
+  <header class="bg-primary text-white sticky top-0 z-50 shadow-md oriental-pattern">
+   <div class="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
+    <div class="text-xl md:text-2xl font-extrabold tracking-tight cursor-pointer flex items-center gap-2" onclick="navigate('accueil')">
+     <i class="fa-solid fa-basket-shopping text-secondary"></i> Naya<span class="text-secondary">Market</span>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-6 font-semibold items-center text-sm">
+     <button onclick="navigate('accueil')" id="nav-accueil" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">Accueil</button>
+     <!-- Menu déroulant Prestations -->
+     <div class="relative group py-2">
+      <button class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent flex items-center gap-1">📦 Prestations <i class="fa-solid fa-chevron-down text-xs"></i></button>
+      <div class="dropdown-menu absolute top-full left-0 mt-1 w-56 bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 overflow-hidden">
+       <button onclick="navigate('alimentation')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary border-b border-gray-50 transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-pepper-hot text-secondary"></i> Alimentation Générale</button>
+       <button onclick="navigate('patisseries')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary border-b border-gray-50 transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-cookie-bite text-secondary"></i> Pâtisseries Orientales</button>
+       <button onclick="navigate('traiteur')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-bowl-food text-secondary"></i> Couscous &amp; Tajines</button>
+      </div>
+     </div>
+     <button onclick="navigate('acces')" id="nav-acces" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">📍 Accès &amp; Horaires</button>
+     <button onclick="navigate('avis')" id="nav-avis" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">⭐ Avis</button>
+     <button onclick="navigate('contact')" id="nav-contact" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">✉️ Contact &amp; Réservation</button>
+    </nav>
+    <!-- CTA Desktop Directs -->
+    <div class="hidden md:flex items-center gap-2">
+     <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="bg-blue-600 text-white p-2 px-3 rounded-full font-bold shadow hover:opacity-90 transition flex items-center gap-1 text-xs"> <i class="fa-brands fa-facebook"></i> </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white p-2 px-3 rounded-full font-bold shadow hover:opacity-90 transition flex items-center gap-1 text-xs"> <i class="fa-brands fa-instagram"></i> </a> <a href="tel:0767934154" class="bg-secondary hover:bg-amber-600 text-white px-3 py-2 rounded-full font-bold shadow transition flex items-center gap-1 text-xs"> <i class="fa-solid fa-phone"></i> Appeler </a>
+    </div>
+    <!-- Mobile Menu Button -->
+    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl focus:outline-none p-2 rounded-md hover:bg-amber-950 transition"><i class="fa-solid fa-bars"></i></button>
+   </div>
+   <!-- Mobile Nav Menu Drawer -->
+   <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-amber-900 shadow-xl px-4 py-4 space-y-2 oriental-pattern">
+    <button onclick="navigate('accueil'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">🏠 Accueil</button>
+    <div class="py-1 border-t border-amber-900/40">
+     <div class="text-amber-300 px-3 py-1 text-xs uppercase tracking-wider font-bold">📦 Prestations</div>
+     <button onclick="navigate('alimentation'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🛒 Alimentation Générale</button>
+     <button onclick="navigate('patisseries'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🥮 Pâtisseries Orientales</button>
+     <button onclick="navigate('traiteur'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🥘 Couscous &amp; Tajines</button>
+    </div>
+    <button onclick="navigate('acces'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold border-t border-amber-900/40">📍 Accès &amp; Horaires</button>
+    <button onclick="navigate('avis'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">⭐ Avis Clients</button>
+    <button onclick="navigate('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">✉️ Contact &amp; Réservation</button>
+    <div class="flex gap-2 pt-3 border-t border-amber-900">
+     <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-facebook"></i> Facebook </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="flex-1 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-instagram"></i> Instagram </a> <a href="tel:0767934154" class="flex-1 bg-secondary text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-solid fa-phone"></i> Appeler </a>
+    </div>
+   </div>
+  </header>
+  <!-- Main Content Container (Pages) -->
+  <main class="flex-grow">
+   <!-- PAGE ACCUEIL -->
+   <div id="page-accueil" class="page-content">
+    <!-- HERO SECTION FOND MARRON UNI + MOTIF -->
+    <section class="relative bg-primary text-white py-28 md:py-36 oriental-pattern overflow-hidden">
+     <div class="relative z-20 container mx-auto px-4 text-center flex flex-col items-center">
+      <span class="bg-secondary text-white text-xs md:text-sm font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider inline-block shadow">Épicerie Fine &amp; Produits Orientaux</span>
+      <h1 class="text-3xl md:text-6xl font-black mb-6 leading-tight max-w-4xl">Le meilleur de l'Orient
+       <br>
+       <span class="text-amber-300">à Saint-Jean-de-Védas</span></h1>
+      <p class="text-base md:text-xl mb-8 max-w-2xl font-light text-amber-100">Épices d'exception, produits frais, halva, thés et douceurs artisanales.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md">
+       <button onclick="navigate('alimentation')" class="bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition text-sm">Découvrir nos rayons</button>
+       <a href="tel:0767934154" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition text-sm flex justify-center items-center gap-2"> <i class="fa-solid fa-phone text-secondary"></i> 07 67 93 41 54 </a>
+      </div>
+     </div>
+    </section>
+    <!-- Aperçu rapide des 3 thèmes -->
+    <section class="container mx-auto px-4 py-16 max-w-6xl">
+     <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">Nos Prestations Principales</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div onclick="navigate('alimentation')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-pepper-hot"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Alimentation Générale</h3>
+       <p class="text-gray-600 text-sm mb-4">Épices, huiles, produits frais et olives marinées.</p>
+       <span class="text-secondary font-bold text-sm">Voir les tarifs →</span>
+      </div>
+      <div onclick="navigate('patisseries')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-cookie-bite"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Pâtisseries Orientales</h3>
+       <p class="text-gray-600 text-sm mb-4">Cornes de gazelle, baklavas et makrouts frais.</p>
+       <span class="text-secondary font-bold text-sm">Voir la carte sucrée →</span>
+      </div>
+      <div onclick="navigate('traiteur')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-bowl-food"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Couscous &amp; Tajines</h3>
+       <p class="text-gray-600 text-sm mb-4">Plats traditionnels mijotés faits maison sur commande.</p>
+       <span class="text-secondary font-bold text-sm">Voir les menus →</span>
+      </div>
+     </div>
+    </section>
+   </div>
+   <!-- PAGE ALIMENTATION -->
+   <div id="page-alimentation" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Alimentation</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+       <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Épices" class="rounded-2xl shadow w-full h-[320px] object-cover">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🛒 Alimentation Générale &amp; Orientale</h2>
+       <p class="text-gray-600 text-sm">Retrouvez tous les indispensables de la cuisine orientale et quotidienne rigoureusement sélectionnés.</p>
+       <ul class="space-y-2 text-sm text-gray-700">
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Épices pures et mélanges authentiques</li>
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Olives fraîches et fromages orientaux</li>
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Huiles d'olive de qualité supérieure</li>
+       </ul>
+       <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-sm">
+        <div class="font-bold text-primary mb-2">Indicateurs tarifaires :</div>
+        <div class="flex justify-between border-b pb-1 mb-1">
+         <span>Olives marinées (le kg) — 8,50 €</span><button type="button" class="nm-add" onclick="nmAdd('olives','Olives marinées (1 kg)',8.5,'grocery')">Ajouter au panier</button>
+        </div>
+        <div class="flex justify-between">
+         <span>Huile d'olive (1 L) — 12,00 €</span><button type="button" class="nm-add" onclick="nmAdd('huile-olive','Huile d’olive (1 L)',12,'grocery')">Ajouter au panier</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE PATISSERIES -->
+   <div id="page-patisseries" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Pâtisseries</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+       <img src="https://images.unsplash.com/photo-1616654160350-f8232c9183cc?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pâtisseries" class="rounded-2xl shadow w-full h-[320px] object-cover">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🥮 Pâtisseries Orientales</h2>
+       <p class="text-gray-600 text-sm">Le goût authentique du miel, des amandes et de la fleur d'oranger pour vos pauses gourmandes.</p>
+       <div class="space-y-3 bg-amber-50 p-5 rounded-xl border border-amber-200">
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('cornes','Cornes de gazelle',2,'food')">Ajouter</button>
+        </div>
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('baklava','Baklava assortiment',1.8,'food')">Ajouter</button>
+        </div>
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('makrout','Makrout dattes/miel',1.5,'food')">Ajouter</button>
+        </div>
+        <div class="flex justify-between items-center text-sm font-bold pt-1 text-primary">
+         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmAdd('plateau','Grand plateau fête',35,'food')">Ajouter</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE TRAITEUR -->
+   <div id="page-traiteur" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Traiteur</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+      <div class="md:w-1/2">
+       <!-- PREMIERE PHOTO D'ILLUSTRATION : COUSCOUS -->
+       <img src="721332997_17891217477539705_5571069465798370448_n.jpg" alt="Couscous Maison" class="rounded-2xl shadow w-full h-[320px] object-cover" onerror="this.src='https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80'">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🥘 Couscous &amp; Tajines</h2>
+       <p class="text-gray-600 text-sm">Commandez vos plats traditionnels faits maison pour vos repas en famille ou entre amis (48h à l'avance).</p>
+      </div>
+     </div>
+     <!-- Description demandée au-dessus du menu -->
+     <div class="bg-amber-50/70 border border-amber-200/60 p-6 rounded-2xl mb-8 text-center max-w-2xl mx-auto">
+      <h3 class="font-bold text-primary text-lg mb-2">Plats faits maison sur commande</h3>
+      <p class="text-gray-700 text-sm mb-3">Nos plats sont préparés avec des produits frais, des ingrédients de qualité et un véritable savoir faire traditionnel.</p>
+      <p class="text-secondary font-semibold text-sm">Que vous soyez seul ou nombreux, faites vous plaisir 😋</p>
+     </div>
+     <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Section Tajines -->
+      <div class="bg-gray-900 text-white p-6 rounded-2xl oriental-pattern shadow-lg">
+       <h3 class="text-xl font-bold text-secondary mb-4 border-b border-gray-700 pb-2">TAJINES</h3>
+       <div class="space-y-6 text-sm">
+        <!-- Tajine Poulet avec Illustration 2 (Tajine olives) -->
+        <div class="border-b border-gray-800 pb-4 flex flex-col md:flex-row gap-4 items-center">
+         <img src="721757600_17891220099539705_7221634884364408683_n.jpg" alt="Tajine Poulet Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
+         <div class="flex-grow w-full">
+          <div class="flex justify-between font-bold text-base">
+           <span>Poulet</span><span class="text-secondary">11,50 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-poulet','Tajine poulet',11.5,'food')">Ajouter</button>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Recettes au choix : olives, citrons confits, pommes de terre, carottes, olives, légumes au choix.</p>
+         </div>
+        </div>
+        <div class="border-b border-gray-800 pb-3">
+         <div class="flex justify-between font-bold text-base">
+          <span>Kefta</span><span class="text-secondary">8,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-kefta','Tajine kefta',8.9,'food')">Ajouter</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-0.5">Boulettes, sauce tomate, épices (œuf au choix).</p>
+        </div>
+        <div class="border-b border-gray-800 pb-3">
+         <div class="flex justify-between font-bold text-base">
+          <span>Bœuf</span><span class="text-secondary">11,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-boeuf','Tajine bœuf',11.9,'food')">Ajouter</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-0.5">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
+        </div>
+        <!-- Tajine Agneau avec Illustration 3 (Tajine citron olives) -->
+        <div class="pt-1 flex flex-col md:flex-row gap-4 items-center">
+         <img src="721779216_17891222772539705_6857303555221063488_n.jpg" alt="Tajine Agneau Citron Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
+         <div class="flex-grow w-full">
+          <div class="flex justify-between font-bold text-base">
+           <span>Agneau</span><span class="text-secondary">12,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-agneau','Tajine agneau',12.9,'food')">Ajouter</button>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- Section Couscous -->
+      <div class="bg-gray-900 text-white p-6 rounded-2xl oriental-pattern shadow-lg">
+       <h3 class="text-xl font-bold text-secondary mb-4 border-b border-gray-700 pb-2">COUSCOUS</h3>
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Poulet</span> <span class="font-bold text-secondary">11,90 €</span>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Agneau</span> <span class="font-bold text-secondary">13,50 €</span>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Bœuf</span> <span class="font-bold text-secondary">12,00 €</span>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Boulettes</span> <span class="font-bold text-secondary">11,00 €</span>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Royal</span> <span class="font-bold text-secondary">14,00 €</span>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Végétarien</span> <span class="font-bold text-secondary">9,50 €</span>
+        </div>
+       </div>
+      </div>
+      <!-- Section Suppléments -->
+      <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-sm">
+       <h4 class="font-bold text-primary mb-3">Suppléments :</h4>
+       <div class="space-y-1.5">
+        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+         <span>Merguez (l'unité)</span> <span class="font-bold text-secondary">1,30 €</span>
+        </div>
+        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+         <span>Boulette kefta</span> <span class="font-bold text-secondary">1,00 €</span>
+        </div>
+        <div class="flex justify-between pt-1">
+         <span>Semoule à la vapeur (les 200gr)</span> <span class="font-bold text-secondary">2,30 €</span>
+        </div>
+       </div>
+      </div>
+      <div class="text-center pt-2">
+       <button onclick="navigate('contact')" class="bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 px-8 rounded-xl text-sm transition shadow">Commander / Réserver un plat</button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE ACCES & HORAIRES -->
+   <div id="page-acces" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Accès &amp; Horaires</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-6">📍 Accès, Localisation &amp; Horaires</h2>
+     <!-- Encadré Horaires mis en évidence -->
+     <div class="bg-amber-500 text-white p-6 rounded-2xl shadow-md mb-8">
+      <div class="text-lg font-bold mb-3 text-center">
+       <i class="fa-solid fa-clock mr-2"></i> Nos Horaires d'Ouverture
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm max-w-lg mx-auto bg-black/10 p-4 rounded-xl">
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Lundi :</span> <span class="font-semibold">Fermé</span>
+       </div>
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Mardi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
+       </div>
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Mercredi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
+       </div>
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Jeudi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
+       </div>
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Vendredi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
+       </div>
+       <div class="flex justify-between border-b border-white/20 pb-1">
+        <span>Samedi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
+       </div>
+       <div class="flex justify-between pt-1 col-span-full text-center">
+        <span>Dimanche :</span> <span class="font-semibold">10:00–12:30, 16:00–20:00</span>
+       </div>
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4 text-sm">
+       <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+        <div class="font-bold text-primary mb-1">
+         <i class="fa-solid fa-tram text-secondary"></i> En Tramway :
+        </div>
+        <p>À seulement <strong>2 minutes à pied</strong> de l'arrêt <strong>Saint-Jean-de-Védas Centre</strong> (Ligne 2).</p>
+       </div>
+       <div>
+        <strong>Adresse :</strong>
+        <br>
+        12 Av. de la Libération, 34430 Saint-Jean-de-Védas
+       </div>
+       <div>
+        <strong>Téléphone :</strong>
+        <br>
+        <a href="tel:0767934154" class="text-secondary font-bold">07 67 93 41 54</a>
+       </div>
+      </div>
+      <div class="h-[300px] rounded-xl overflow-hidden shadow border">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.378772023023!2d3.824285!3d43.578611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6ad0c00000000%3A0x0!2s12%20Av.%20de%20la%20Lib%C3%A9ration%2C%2034430%20Saint-Jean-de-V%C3%A9das!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE AVIS -->
+   <div id="page-avis" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Avis</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-6 text-center">⭐ Avis de nos Clients</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
+       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
+       <p class="italic text-gray-600 mb-2">"Super épicerie, les cornes de gazelle sont top !"</p>
+       <span class="font-bold text-primary">- Sarah M.</span>
+      </div>
+      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
+       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
+       <p class="italic text-gray-600 mb-2">"Couscous excellent commandé pour le week-end."</p>
+       <span class="font-bold text-primary">- Thomas R.</span>
+      </div>
+      <div class="bg-gray-50 p-4 rounded-xl border text-sm">
+       <div class="text-secondary mb-1">⭐⭐⭐⭐⭐</div>
+       <p class="italic text-gray-600 mb-2">"Très pratique à 2 min du tram."</p>
+       <span class="font-bold text-primary">- Karima B.</span>
+      </div>
+     </div>
+     <!-- Formulaire Avis -->
+     <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-xl mx-auto space-y-4 bg-amber-50 p-6 rounded-2xl">
+      <h3 class="font-bold text-primary text-center">Laissez votre recommandation</h3>
+      <input type="hidden" name="_subject" value="Avis Naya Market">
+      <div class="grid grid-cols-2 gap-4">
+       <input type="text" name="prenom" placeholder="Votre Prénom" required class="w-full p-2 bg-white rounded border text-sm"> <select name="note" class="w-full p-2 bg-white rounded border text-sm"> <option value="5">⭐⭐⭐⭐⭐ Parfait</option> <option value="4">⭐⭐⭐⭐ Très bien</option> </select>
+      </div>
+      <textarea name="commentaire" placeholder="Votre commentaire..." rows="3" required class="w-full p-2 bg-white rounded border text-sm resize-none"></textarea>
+      <button type="submit" class="w-full bg-secondary text-white font-bold py-2 rounded text-sm">Envoyer l'avis</button>
+     </form>
+    </div>
+   </div>
+   <!-- PAGE CONTACT & RÉSERVATION TRAITEUR -->
+   <div id="page-contact" class="page-content container mx-auto px-4 py-12 max-w-4xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Contact &amp; Réservation</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-2 text-center">✉️ Contact</h2>
+     <p class="text-gray-600 text-sm text-center mb-8">Une question ? Écrivez-nous via ce formulaire.</p>
+     <form action="https://formspree.io/f/xppanznj" method="POST" class="space-y-4">
+      <input type="hidden" name="_subject" value="Nouveau message de contact — Naya Market">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Nom / Prénom *</label> <input type="text" name="nom" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Votre nom">
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Téléphone *</label> <input type="tel" name="telephone" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="07 XX XX XX XX">
+       </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Plat Souhaité (Traiteur)</label> <select name="plat_traiteur" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white"> <option value="Aucun / Question simple">-- Question simple / Autre --</option> <optgroup label="TAJINES"> <option value="Tajine Poulet (11.50€)">Tajine Poulet (11,50 €)</option> <option value="Tajine Kefta (8.90€)">Tajine Kefta (8,90 €)</option> <option value="Tajine Bœuf (11.90€)">Tajine Bœuf (11,90 €)</option> <option value="Tajine Agneau (12.90€)">Tajine Agneau (12,90 €)</option> </optgroup> <optgroup label="COUSCOUS"> <option value="Couscous Poulet (11.90€)">Couscous Poulet (11,90 €)</option> <option value="Couscous Agneau (13.50€)">Couscous Agneau (13,50 €)</option> <option value="Couscous Bœuf (12.00€)">Couscous Bœuf (12,00 €)</option> <option value="Couscous Boulettes (11.00€)">Couscous Boulettes (11,00 €)</option> <option value="Couscous Royal (14.00€)">Couscous Royal (14,00 €)</option> <option value="Couscous Végétarien (9.50€)">Couscous Végétarien (9,50 €)</option> </optgroup> </select>
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre de personnes / parts</label> <input type="number" name="nombre_personnes" min="1" max="100" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Ex: 4 parts">
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Date souhaitée du retrait</label> <input type="date" name="date_retrait" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white">
+       </div>
+      </div>
+      <div>
+       <label class="block text-xs font-semibold text-gray-700 mb-1">Commentaires (ex: sans piment, allergies, recettes au choix, précisions...)</label> <textarea name="commentaire" rows="4" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white resize-none" placeholder="Précisez vos consignes particulières ici..."></textarea>
+      </div>
+      <button type="submit" class="w-full bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-2 mt-4">Envoyer ma demande de réservation <i class="fa-solid fa-paper-plane"></i></button>
+     </form>
+    </div>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-8 border-t border-amber-900 mt-auto oriental-pattern">
+   <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+    <div>
+     <div class="text-white font-bold text-sm mb-1">Naya Market</div>
+     <p>© 2026 Tous droits réservés. Saint-Jean-de-Védas.</p>
+    </div>
+    <div class="flex items-center gap-3">
+     <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="hover:text-white transition bg-blue-600/20 text-blue-300 px-3 py-1.5 rounded flex items-center gap-1"> <i class="fa-brands fa-facebook"></i> Facebook </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="hover:text-white transition bg-white/10 px-3 py-1.5 rounded flex items-center gap-1"> <i class="fa-brands fa-instagram text-pink-400"></i> Instagram </a> <a href="tel:0767934154" class="hover:text-white transition bg-secondary/20 text-amber-300 px-3 py-1.5 rounded flex items-center gap-1"> <i class="fa-solid fa-phone"></i> 07 67 93 41 54 </a>
+    </div>
+   </div>
+  </footer>
+  <!-- Script de Navigation Multi-pages JS -->
+  <script>
+        function navigate(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('border-secondary', 'text-secondary');
+            });
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.add('border-secondary', 'text-secondary');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        navigate('accueil');
+    </script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <button type="button" class="nm-fab" onclick="nmOpen()">🛒 Panier (<span id="nmCount">0</span>)</button><div class="nm-overlay" id="nmOverlay" onclick="nmClose()"></div><aside class="nm-drawer" id="nmDrawer"><div class="p-5 border-b flex justify-between"><h2 class="text-2xl font-extrabold text-primary">Votre panier</h2><button onclick="nmClose()" class="text-3xl">×</button></div><div class="p-5 overflow-y-auto flex-1"><div id="nmItems"><p>Panier vide.</p></div><div class="mt-4 border-t pt-4 space-y-2"><div class="flex justify-between"><span>Sous-total</span><strong id="nmSubtotal">0,00 €</strong></div><div class="flex justify-between"><span>Livraison épicerie</span><strong id="nmShipping">0,00 €</strong></div><div class="flex justify-between text-lg font-extrabold"><span>Total estimé</span><strong id="nmTotal">0,00 €</strong></div></div><p class="nm-info mt-4">La livraison à 4,90 € concerne les produits d’épicerie sélectionnés pour livraison à domicile. Les plats traiteur/pâtisseries sont prévus pour retrait sauf accord préalable.</p><form class="mt-5 space-y-3" onsubmit="nmPrepare(event)"><h3 class="font-bold">Réception de la commande</h3><p class="text-xs text-gray-600">Plats traiteur : retrait en boutique uniquement, le lendemain, sur un créneau obligatoire. Aucune livraison de plats.</p><label class="block text-sm">Mode de réception<select id="nmMode" class="mt-1 w-full border rounded p-2" onchange="nmModeChanged()" required><option value="">Choisir obligatoirement</option><option value="pickup">Retrait en boutique</option><option value="home">Livraison épicerie — 4,90 €</option><option value="relay">Demande d’envoi Mondial Relay</option></select></label><div id="nmFoodPickup" class="hidden space-y-2"><label class="block text-sm">Date de retrait (lendemain uniquement)<input id="nmPickupDate" type="date" required class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Créneau de retrait<select id="nmPickupSlot" class="mt-1 w-full border rounded p-2"><option value="">Choisir un créneau</option><option>10:00–11:00</option><option>11:00–12:00</option><option>12:00–13:00</option><option>15:30–16:30</option><option>16:30–17:30</option><option>17:30–19:00</option></select></label></div><div id="nmHome" class="hidden"><label class="block text-sm">Adresse<input id="nmAddress" class="mt-1 w-full border rounded p-2" placeholder="N°, rue, code postal, ville"></label></div><div id="nmRelay" class="hidden space-y-2"><p class="text-xs">Indiquez la ville/code postal et, si connu, le relais souhaité. La disponibilité et les frais Mondial Relay seront confirmés par la boutique. Aucun relais n’est réservé automatiquement.</p><label class="block text-sm">Ville ou code postal<input id="nmRelayCity" class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Point relais souhaité (facultatif)<input id="nmRelayName" class="mt-1 w-full border rounded p-2"></label></div><label class="block text-sm">Nom et prénom<input id="nmName" required maxlength="120" autocomplete="name" class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Téléphone<input id="nmPhone" type="tel" required maxlength="30" autocomplete="tel" class="mt-1 w-full border rounded p-2" placeholder="06 12 34 56 78"></label><label class="block text-sm">E-mail<input id="nmEmail" type="email" required maxlength="254" autocomplete="email" class="mt-1 w-full border rounded p-2"></label><button class="w-full rounded-lg bg-primary text-white p-3 font-bold">Préparer le récapitulatif</button></form><div id="nmSummaryBox" class="hidden nm-info mt-4"><strong id="nmSummaryTitle">Récapitulatif</strong><textarea id="nmSummary" readonly rows="10" class="w-full mt-2 border rounded p-2 text-xs"></textarea><div class="flex flex-wrap gap-2 mt-2"><button type="button" onclick="nmCopy()" class="bg-gray-200 rounded p-2">Copier le récapitulatif</button><button type="button" id="nmSendRequest" onclick="nmSend()" class="bg-primary text-white rounded p-2">Envoyer la demande</button></div><p id="nmSendStatus" class="text-sm mt-2" role="status"></p></div><div class="mt-5 border-t pt-4"><p class="nm-info">Aucun paiement en ligne n’est activé. La commande est une demande à confirmer par la boutique.</p></div></div></aside><script>
+const NM_SUPABASE_URL = "https://vkmmbgkfpxogscyukvnc.supabase.co";
+const NM_SUPABASE_ANON_KEY = "sb_publishable_Qkwx2u4shOlpC3TjcOpM3A_w-d5nYNZ";
+const nmDbConfigured = !NM_SUPABASE_URL.includes("VOTRE-PROJET") && !NM_SUPABASE_ANON_KEY.includes("VOTRE_CLE");
+const nmDb = nmDbConfigured && window.supabase ? window.supabase.createClient(NM_SUPABASE_URL, NM_SUPABASE_ANON_KEY) : null;
+const nmCart = {}, nmCatalog = {};
+const nmEur = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+function nmTomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+const nmDateInput=document.getElementById('nmPickupDate'); if(nmDateInput){nmDateInput.min=nmTomorrow();nmDateInput.value=nmTomorrow()}
+function nmSlug(name){return name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+async function nmLoadCatalog(){if(!nmDb)return;const {data,error}=await nmDb.from('products').select('id,slug,name,category,price_cents,stock_quantity,is_active').eq('is_active',true);if(error){console.error('Supabase catalogue:',error);return}Object.keys(nmCatalog).forEach(k=>delete nmCatalog[k]);data.forEach(p=>{const kind=['tajine','couscous','patisserie'].includes(p.category)?'food':'grocery';const slug=p.slug||nmSlug(p.name);nmCatalog[slug]={...p,slug,price:p.price_cents/100,stock:p.stock_quantity,active:p.is_active,kind}});nmRender();document.querySelectorAll('.nm-add').forEach(b=>{const m=b.getAttribute('onclick')?.match(/nmAdd\('([^']+)'/);if(m){const p=nmCatalog[m[1]];if(p){b.disabled=p.stock<=0;b.textContent=p.stock<=0?'Épuisé':'Ajouter au panier';b.title=`Stock disponible : ${p.stock}`}}})}
+async function nmAdd(id,name,price,kind){if(!nmDb){alert('La base de données n’est pas configurée.');return}if(!nmCatalog[id])await nmLoadCatalog();const p=nmCatalog[id];if(!p||!p.active){alert('Article absent du catalogue Supabase. Vérifiez le nom du produit.');return}const q=nmCart[id]?.qty||0;if(p.stock<=q){alert(p.stock<=0?'Article épuisé.':`Stock disponible : ${p.stock}`);return}if(nmCart[id])nmCart[id].qty++;else nmCart[id]={id:p.id,slug:id,name:p.name,price:Number(p.price),kind:p.kind,qty:1};nmRender()}
+function nmQty(id,d){if(!nmCart[id])return;const next=nmCart[id].qty+d;const slug=nmCart[id].slug;if(next>(nmCatalog[slug]?.stock??0)){alert('Stock insuffisant.');return}nmCart[id].qty=next;if(nmCart[id].qty<1)delete nmCart[id];nmRender()}
+function nmOpen(){nmDrawer.classList.add('open');nmOverlay.classList.add('open')}
+function nmClose(){nmDrawer.classList.remove('open');nmOverlay.classList.remove('open')}
+function nmModeChanged(){const t=nmTotals();const hasFood=t.items.some(p=>p.kind==='food');const hasGrocery=t.items.some(p=>p.kind==='grocery');nmHome.classList.toggle('hidden',nmMode.value!=='home');nmRelay.classList.toggle('hidden',nmMode.value!=='relay');document.getElementById('nmFoodPickup').classList.toggle('hidden',!hasFood);if(hasFood){nmMode.value='pickup';nmHome.classList.add('hidden');nmRelay.classList.add('hidden')}const homeOpt=nmMode.querySelector('option[value="home"]');if(homeOpt)homeOpt.disabled=hasFood;const relayOpt=nmMode.querySelector('option[value="relay"]');if(relayOpt)relayOpt.disabled=hasFood;nmRender()}
+function nmTotals(){const items=Object.values(nmCart),sub=items.reduce((s,p)=>s+p.price*p.qty,0),grocery=items.some(p=>p.kind==='grocery'),food=items.some(p=>p.kind==='food'),shipping=nmMode.value==='home'&&grocery&&!food?4.9:0;return{items,sub,shipping,total:sub+shipping,grocery,food}}
+function nmRender(){const t=nmTotals();nmCount.textContent=t.items.reduce((s,p)=>s+p.qty,0);nmItems.innerHTML=t.items.length?t.items.map(p=>`<div class="nm-row"><div><strong>${p.name}</strong><div>${nmEur(p.price)} / unité</div><div class="text-xs text-gray-500">Stock : ${nmCatalog[p.slug]?.stock??'à vérifier'}</div><div class="nm-qty"><button type="button" onclick="nmQty('${p.slug}',-1)">−</button> ${p.qty} <button type="button" onclick="nmQty('${p.slug}',1)">+</button></div></div><strong>${nmEur(p.price*p.qty)}</strong></div>`).join(''):'<p>Votre panier est vide.</p>';nmSubtotal.textContent=nmEur(t.sub);nmShipping.textContent=nmEur(t.shipping);nmTotal.textContent=nmEur(t.total);if(document.getElementById('nmFoodPickup'))document.getElementById('nmFoodPickup').classList.toggle('hidden',!t.food)}
+function nmPrepare(e){e.preventDefault();const t=nmTotals();if(!nmDb){alert('Base de données non configurée.');return}if(!t.items.length){alert('Ajoutez un article.');return}if(!nmMode.value){alert('Choisissez le mode de réception.');return}if(t.food&&(nmMode.value!=='pickup')){alert('Les plats sont uniquement à retirer en boutique.');return}if(t.food&&nmPickupDate.value!==nmTomorrow()){alert('Les plats doivent être retirés le lendemain de la commande.');return}if(t.food&&!nmPickupSlot.value){alert('Choisissez un créneau de retrait pour demain.');return}if(nmMode.value==='home'&&(!t.grocery||t.food)){alert('La livraison à 4,90 € est réservée à l’épicerie, sans plat traiteur.');return}if(nmMode.value==='home'&&!nmAddress.value.trim()){alert('Indiquez l’adresse de livraison.');return}if(nmMode.value==='relay'&&!nmRelayCity.value.trim()){alert('Indiquez la ville ou le code postal.');return}nmSummary.value=['NAYA MARKET — DEMANDE DE COMMANDE','Nom : '+nmName.value,'Téléphone : '+nmPhone.value,'E-mail : '+nmEmail.value,'Mode : '+nmMode.options[nmMode.selectedIndex].text,t.food?'Retrait prévu : '+nmPickupDate.value+' — '+nmPickupSlot.value:'',nmMode.value==='home'?'Adresse : '+nmAddress.value:'',nmMode.value==='relay'?'Ville/code postal : '+nmRelayCity.value:'',...t.items.map(p=>`${p.qty} × ${p.name} : ${nmEur(p.qty*p.price)}`),'Sous-total : '+nmEur(t.sub),'Livraison : '+nmEur(t.shipping),'Total indicatif : '+nmEur(t.total),'Commande en attente de confirmation. Aucun paiement encaissé.'].filter(Boolean).join('\n');document.getElementById('nmSummaryTitle').textContent='Récapitulatif';document.getElementById('nmSendRequest').textContent='Enregistrer la commande';document.getElementById('nmSendStatus').textContent='';nmSummaryBox.classList.remove('hidden')}
+async function nmSend(){const btn=document.getElementById('nmSendRequest'),status=document.getElementById('nmSendStatus');if(!nmDb){status.textContent='Base de données non configurée.';return}btn.disabled=true;btn.textContent='Enregistrement…';try{const t=nmTotals();const {data,error}=await nmDb.rpc('create_customer_order',{p_customer_name:nmName.value.trim(),p_customer_email:nmEmail.value.trim(),p_customer_phone:nmPhone.value.trim(),p_mode:nmMode.value,p_items:t.items.map(p=>({id:p.id,qty:p.qty})),p_address:nmMode.value==='home'?nmAddress.value.trim():null,p_relay_city:nmMode.value==='relay'?nmRelayCity.value.trim():null,p_relay_name:nmMode.value==='relay'?nmRelayName.value.trim():null,p_pickup_date:t.food?nmPickupDate.value:null,p_pickup_slot:t.food?nmPickupSlot.value:null});if(error)throw error;status.textContent=`Commande enregistrée : ${data.order_number}. En attente de confirmation par la boutique.`;status.className='text-sm mt-2 text-green-700';btn.textContent='Commande enregistrée';Object.keys(nmCart).forEach(k=>delete nmCart[k]);await nmLoadCatalog();nmRender()}catch(err){console.error(err);status.textContent=err.message?.includes('STOCK_INSUFFICIENT')?'Stock insuffisant : la commande n’a pas été enregistrée.':err.message?.includes('PICKUP_MUST_BE_TOMORROW')?'La date de retrait doit être demain.':'Échec de l’enregistrement. Vérifiez la configuration Supabase et les champs saisis.';status.className='text-sm mt-2 text-red-700';btn.disabled=false;btn.textContent='Réessayer'}}
+async function nmCopy(){try{await navigator.clipboard.writeText(nmSummary.value);alert('Récapitulatif copié.')}catch(e){nmSummary.select();document.execCommand('copy')}}
+nmRender();nmLoadCatalog();
+</script>
+</body>
+</html>
