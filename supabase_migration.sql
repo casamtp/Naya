@@ -40,12 +40,13 @@ create function public.create_customer_order(
  p_address text default null, p_relay_city text default null, p_relay_name text default null,
  p_pickup_date date default null, p_pickup_slot text default null
 ) returns jsonb language plpgsql security definer set search_path=public,pg_temp as $$
-declare v_item jsonb; v_product public.products%rowtype; v_order_id uuid; v_subtotal integer:=0; v_fee integer:=0; v_has_food boolean:=false; v_has_grocery boolean:=false; v_qty integer; v_method text; v_type text;
+declare v_item jsonb; v_product public.products%rowtype; v_order_id uuid; v_subtotal integer:=0; v_fee integer:=0; v_has_food boolean:=false; v_has_grocery boolean:=false; v_qty integer; v_method text; v_type text; v_rows integer;
 begin
  if coalesce(trim(p_customer_name),'')='' or coalesce(trim(p_customer_email),'')='' or coalesce(trim(p_customer_phone),'')='' then raise exception 'CUSTOMER_REQUIRED'; end if;
  if length(trim(p_customer_name))>120 or length(trim(p_customer_email))>254 or length(trim(p_customer_phone))>30 then raise exception 'CUSTOMER_FIELD_TOO_LONG'; end if;
  if p_mode not in ('pickup','home','relay') then raise exception 'INVALID_FULFILLMENT'; end if;
  if jsonb_typeof(p_items)<>'array' or jsonb_array_length(p_items)=0 or jsonb_array_length(p_items)>30 then raise exception 'EMPTY_OR_TOO_LARGE_ORDER'; end if;
+ if exists (select 1 from jsonb_array_elements(p_items) as item(value) group by value->>'id' having count(*)>1) then raise exception 'DUPLICATE_PRODUCT'; end if;
  for v_item in select value from jsonb_array_elements(p_items) loop
   if coalesce(v_item->>'id','') !~* '^[0-9a-f-]{36}$' or coalesce(v_item->>'qty','') !~ '^[0-9]+$' then raise exception 'INVALID_ITEM'; end if;
   v_qty:=(v_item->>'qty')::integer; if v_qty<1 or v_qty>50 then raise exception 'INVALID_QUANTITY'; end if;
@@ -71,7 +72,9 @@ begin
  case when v_has_food then p_pickup_date else null end,case when v_has_food then p_pickup_slot else null end,v_fee,v_subtotal,v_subtotal+v_fee,'nouvelle') returning id into v_order_id;
  for v_item in select value from jsonb_array_elements(p_items) loop
   v_qty:=(v_item->>'qty')::integer; select * into v_product from public.products where id=(v_item->>'id')::uuid and is_active=true for update;
-  update public.products set stock_quantity=stock_quantity-v_qty,updated_at=now() where id=v_product.id;
+  update public.products set stock_quantity=stock_quantity-v_qty,updated_at=now() where id=v_product.id and is_active=true and stock_quantity>=v_qty;
+  get diagnostics v_rows = row_count;
+  if v_rows=0 then raise exception 'STOCK_INSUFFICIENT'; end if;
   insert into public.order_items(order_id,product_id,product_name,quantity,unit_price_cents,line_total_cents) values(v_order_id,v_product.id,v_product.name,v_qty,v_product.price_cents*v_qty,v_product.price_cents*v_qty);
  end loop;
  return jsonb_build_object('id',v_order_id,'order_number',upper(substr(replace(v_order_id::text,'-',''),1,8)),'subtotal_cents',v_subtotal,'delivery_fee_cents',v_fee,'total_cents',v_subtotal+v_fee);
