@@ -351,35 +351,38 @@
     </div>
     <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
      <h2 class="text-3xl font-extrabold text-primary mb-6">📍 Accès, Localisation &amp; Horaires</h2>
-     <!-- Encadré Horaires mis en évidence -->
-     <div class="bg-amber-500 text-white p-6 rounded-2xl shadow-md mb-8">
-      <div class="text-lg font-bold mb-3 text-center">
-       <i class="fa-solid fa-clock mr-2"></i> Nos Horaires d'Ouverture
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm max-w-lg mx-auto bg-black/10 p-4 rounded-xl">
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Lundi :</span> <span class="font-semibold">Fermé</span>
+     <!-- Horaires : carte premium aux couleurs Naya Market -->
+     <section class="relative overflow-hidden rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-xl mb-8">
+      <div class="bg-primary text-white px-6 py-5 md:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 oriental-pattern">
+       <div>
+        <p class="text-amber-300 text-xs font-bold uppercase tracking-[0.18em] mb-1">Bienvenue chez Naya Market</p>
+        <h3 class="text-2xl md:text-3xl font-extrabold"><i class="fa-regular fa-clock text-secondary mr-2"></i>Horaires d’ouverture</h3>
+        <p class="text-amber-100 text-sm mt-1">Organisez votre visite en un coup d’œil</p>
        </div>
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Mardi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
-       </div>
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Mercredi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
-       </div>
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Jeudi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
-       </div>
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Vendredi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
-       </div>
-       <div class="flex justify-between border-b border-white/20 pb-1">
-        <span>Samedi :</span> <span class="font-semibold">10:00–13:00, 15:30–19:30</span>
-       </div>
-       <div class="flex justify-between pt-1 col-span-full text-center">
-        <span>Dimanche :</span> <span class="font-semibold">10:00–12:30, 16:00–20:00</span>
+       <div class="inline-flex items-center gap-2 self-start sm:self-center rounded-full border border-amber-300/40 bg-white/10 px-4 py-2 text-sm font-semibold text-amber-100">
+        <i class="fa-solid fa-location-dot text-secondary"></i> Saint-Jean-de-Védas
        </div>
       </div>
-     </div>
+      <div class="p-4 md:p-7">
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+         <span class="font-semibold text-gray-700">Lundi</span><span class="rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-700">Fermé</span>
+        </div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Mardi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Mercredi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Jeudi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Vendredi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Samedi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="sm:col-span-2 lg:col-span-3 rounded-xl border border-amber-300 bg-amber-100/70 px-4 py-4">
+         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div class="font-bold text-primary"><i class="fa-solid fa-star text-secondary mr-2"></i>Dimanche</div>
+          <div class="flex flex-wrap gap-2 text-sm"><span class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-gray-800"><i class="fa-regular fa-sun text-secondary mr-2"></i>10:00–12:30</span><span class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-gray-800"><i class="fa-regular fa-moon text-secondary mr-2"></i>16:00–20:00</span></div>
+         </div>
+        </div>
+       </div>
+       <p class="mt-4 text-center text-xs text-gray-500"><i class="fa-solid fa-circle-info text-secondary mr-1"></i>Les horaires peuvent exceptionnellement varier lors des jours fériés.</p>
+      </div>
+     </section>
      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div class="space-y-4 text-sm">
        <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
