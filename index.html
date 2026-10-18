@@ -220,16 +220,16 @@
        <p class="text-gray-600 text-sm">Le goût authentique du miel, des amandes et de la fleur d'oranger pour vos pauses gourmandes.</p>
        <div class="space-y-3 bg-amber-50 p-5 rounded-xl border border-amber-200">
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('cornes','Cornes de gazelle',2,'food')">Ajouter au panier</button>
+         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmReserveFood('Cornes de gazelle')">Réserver via formulaire</button>
         </div>
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('baklava','Baklava assortiment',1.8,'food')">Ajouter au panier</button>
+         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmReserveFood('Baklava assortiment')">Réserver via formulaire</button>
         </div>
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('makrout','Makrout dattes/miel',1.5,'food')">Ajouter au panier</button>
+         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmReserveFood('Makrout dattes/miel')">Réserver via formulaire</button>
         </div>
         <div class="flex justify-between items-center text-sm font-bold pt-1 text-primary">
-         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmAdd('plateau','Grand plateau fête',35,'food')">Ajouter au panier</button>
+         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmReserveFood('Grand plateau fête')">Réserver via formulaire</button>
         </div>
        </div>
       </div>
@@ -450,7 +450,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
        <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Plat Souhaité (Traiteur)</label> <select name="plat_traiteur" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white"> <option value="Aucun / Question simple">-- Question simple / Autre --</option> <optgroup label="TAJINES"> <option value="Tajine Poulet (11.50€)">Tajine Poulet (11,50 €)</option> <option value="Tajine Kefta (8.90€)">Tajine Kefta (8,90 €)</option> <option value="Tajine Bœuf (11.90€)">Tajine Bœuf (11,90 €)</option> <option value="Tajine Agneau (12.90€)">Tajine Agneau (12,90 €)</option> </optgroup> <optgroup label="COUSCOUS"> <option value="Couscous Poulet (11.90€)">Couscous Poulet (11,90 €)</option> <option value="Couscous Agneau (13.50€)">Couscous Agneau (13,50 €)</option> <option value="Couscous Bœuf (12.00€)">Couscous Bœuf (12,00 €)</option> <option value="Couscous Boulettes (11.00€)">Couscous Boulettes (11,00 €)</option> <option value="Couscous Royal (14.00€)">Couscous Royal (14,00 €)</option> <option value="Couscous Végétarien (9.50€)">Couscous Végétarien (9,50 €)</option> </optgroup> </select>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Plat Souhaité (Traiteur)</label> <select name="plat_traiteur" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white"> <option value="Aucun / Question simple">-- Question simple / Autre --</option> <optgroup label="TAJINES"> <option value="Tajine Poulet (11.50€)">Tajine Poulet (11,50 €)</option> <option value="Tajine Kefta (8.90€)">Tajine Kefta (8,90 €)</option> <option value="Tajine Bœuf (11.90€)">Tajine Bœuf (11,90 €)</option> <option value="Tajine Agneau (12.90€)">Tajine Agneau (12,90 €)</option> </optgroup> <optgroup label="COUSCOUS"> <option value="Couscous Poulet (11.90€)">Couscous Poulet (11,90 €)</option> <option value="Couscous Agneau (13.50€)">Couscous Agneau (13,50 €)</option> <option value="Couscous Bœuf (12.00€)">Couscous Bœuf (12,00 €)</option> <option value="Couscous Boulettes (11.00€)">Couscous Boulettes (11,00 €)</option> <option value="Couscous Royal (14.00€)">Couscous Royal (14,00 €)</option> <option value="Couscous Végétarien (9.50€)">Couscous Végétarien (9,50 €)</option> </optgroup> <optgroup label="PÂTISSERIES"> <option value="Cornes de gazelle">Cornes de gazelle</option> <option value="Baklava assortiment">Baklava assortiment</option> <option value="Makrout dattes/miel">Makrout dattes/miel</option> <option value="Grand plateau fête">Grand plateau fête</option> </optgroup> </select>
        </div>
        <div>
         <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre de personnes / parts</label> <input type="number" name="nombre_personnes" min="1" max="100" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Ex: 4 parts">
