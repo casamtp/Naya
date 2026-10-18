@@ -481,12 +481,14 @@
   </footer>
   <!-- Script de Navigation Multi-pages JS -->
   <script>
-        const nmPageHistory = [];
         let nmCurrentPage = 'accueil';
+        let nmIgnoreNextPop = false;
         function navigate(pageId, addHistory = true) {
             const target = document.getElementById('page-' + pageId);
             if (!target) return;
-            if (addHistory && nmCurrentPage !== pageId) nmPageHistory.push(nmCurrentPage);
+            if (addHistory && nmCurrentPage !== pageId) {
+                history.pushState({ nmPage: pageId, nmCartOpen: false }, '', '#'+pageId);
+            }
             document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
             target.classList.add('active');
             nmCurrentPage = pageId;
@@ -496,18 +498,35 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         function nmGoBack() {
-            if (document.getElementById('nmDrawer')?.classList.contains('open')) {
-                nmClose();
+            if (history.state && history.state.nmCartOpen) {
+                history.back();
                 return;
             }
-            const previous = nmPageHistory.pop();
-            if (previous) navigate(previous, false);
-            else if (nmCurrentPage !== 'accueil') navigate('accueil', false);
+            if (history.state && history.state.nmPage && history.state.nmPage !== 'accueil') {
+                history.back();
+                return;
+            }
+            if (nmCurrentPage !== 'accueil') {
+                navigate('accueil', true);
+                return;
+            }
+            if (document.getElementById('nmDrawer')?.classList.contains('open')) nmClose();
         }
-        window.addEventListener('popstate', () => {
-            nmGoBack();
+        window.addEventListener('popstate', (event) => {
+            const state = event.state || {};
+            const drawer = document.getElementById('nmDrawer');
+            const overlay = document.getElementById('nmOverlay');
+            if (drawer && overlay) {
+                drawer.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+            if (state.nmPage && document.getElementById('page-' + state.nmPage)) {
+                navigate(state.nmPage, false);
+            } else if (nmCurrentPage !== 'accueil') {
+                navigate('accueil', false);
+            }
         });
-
+        history.replaceState({ nmPage: 'accueil', nmCartOpen: false }, '', location.pathname + location.search);
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
@@ -529,8 +548,8 @@ function nmSlug(name){return name.normalize('NFD').replace(/[\u0300-\u036f]/g,''
 async function nmLoadCatalog(){if(!nmDb)return;const {data,error}=await nmDb.from('products').select('id,slug,name,category,price_cents,stock_quantity,is_active').eq('is_active',true);if(error){console.error('Supabase catalogue:',error);return}Object.keys(nmCatalog).forEach(k=>delete nmCatalog[k]);data.forEach(p=>{const kind=['tajine','couscous','patisserie'].includes(p.category)?'food':'grocery';const slug=p.slug||nmSlug(p.name);nmCatalog[slug]={...p,slug,price:p.price_cents/100,stock:p.stock_quantity,active:p.is_active,kind}});nmRender();document.querySelectorAll('.nm-add').forEach(b=>{const m=b.getAttribute('onclick')?.match(/nmAdd\('([^']+)'/);if(m){const p=nmCatalog[m[1]];if(p){b.disabled=p.stock<=0;b.textContent=p.stock<=0?'Épuisé':'Ajouter au panier';b.title=`Stock disponible : ${p.stock}`}}})}
 async function nmAdd(id,name,price,kind){if(!nmDb){alert('La base de données n’est pas configurée.');return}if(!nmCatalog[id])await nmLoadCatalog();const p=nmCatalog[id];if(!p||!p.active){alert('Article absent du catalogue Supabase. Vérifiez le nom du produit.');return}const q=nmCart[id]?.qty||0;if(p.stock<=q){alert(p.stock<=0?'Article épuisé.':`Stock disponible : ${p.stock}`);return}const currentKinds=new Set(Object.values(nmCart).map(item=>item.kind));if(currentKinds.size&&!currentKinds.has(p.kind)){alert('Les produits d’épicerie et les pâtisseries/plats doivent faire l’objet de commandes séparées. Terminez ou videz le panier avant de changer de catégorie.');return}if(nmCart[id])nmCart[id].qty++;else nmCart[id]={id:p.id,slug:id,name:p.name,price:Number(p.price),kind:p.kind,qty:1};nmRender();nmModeChanged()}
 function nmQty(id,d){if(!nmCart[id])return;const next=nmCart[id].qty+d;const slug=nmCart[id].slug;if(next>(nmCatalog[slug]?.stock??0)){alert('Stock insuffisant.');return}nmCart[id].qty=next;if(nmCart[id].qty<1)delete nmCart[id];nmRender()}
-function nmOpen(){nmDrawer.classList.add('open');nmOverlay.classList.add('open')}
-function nmClose(){nmDrawer.classList.remove('open');nmOverlay.classList.remove('open')}
+function nmOpen(){if(nmDrawer.classList.contains('open'))return;nmDrawer.classList.add('open');nmOverlay.classList.add('open');history.pushState({nmPage:nmCurrentPage,nmCartOpen:true},'','#panier')}
+function nmClose(){if(!nmDrawer.classList.contains('open'))return;nmDrawer.classList.remove('open');nmOverlay.classList.remove('open');if(history.state&&history.state.nmCartOpen)history.back()}
 function nmModeChanged(){nmMode.value='home';nmHome.classList.remove('hidden');nmRender()}
 function nmReserveFood(name){navigate('contact');const select=document.querySelector('[name="plat_traiteur"]');if(select){const opts=[...select.options];const match=opts.find(o=>o.text.toLowerCase().includes(name.toLowerCase())||o.value.toLowerCase().includes(name.toLowerCase()));if(match)select.value=match.value;}window.scrollTo({top:0,behavior:'smooth'});}
 function nmTotals(){const items=Object.values(nmCart),sub=items.reduce((s,p)=>s+p.price*p.qty,0),grocery=items.some(p=>p.kind==='grocery'),food=items.some(p=>p.kind==='food'),shipping=grocery?4.9:0;return{items,sub,shipping,total:sub+shipping,grocery,food}}
