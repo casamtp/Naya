@@ -467,6 +467,30 @@
       </div>
       <button type="submit" class="w-full bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-2 mt-4">Envoyer ma demande de réservation <i class="fa-solid fa-paper-plane"></i></button>
      </form>
+     <div class="mt-8 border-t border-amber-100 pt-8">
+      <div class="mb-5 text-center">
+       <h3 class="text-xl font-extrabold text-primary"><i class="fa-regular fa-envelope text-secondary mr-2"></i>Une question ? Contactez-nous</h3>
+       <p class="mt-2 text-sm text-gray-600">Pour une question générale, utilisez ce formulaire rapide. Pour réserver un plat, utilisez le formulaire ci-dessus.</p>
+      </div>
+      <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-2xl mx-auto space-y-4 rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+       <input type="hidden" name="_subject" value="Message de contact simple — Naya Market">
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+         <label for="simple-contact-name" class="mb-1 block text-xs font-semibold text-gray-700">Nom / Prénom *</label>
+         <input id="simple-contact-name" type="text" name="nom_contact" required maxlength="120" autocomplete="name" class="w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="Votre nom">
+        </div>
+        <div>
+         <label for="simple-contact-email" class="mb-1 block text-xs font-semibold text-gray-700">E-mail *</label>
+         <input id="simple-contact-email" type="email" name="email_contact" required maxlength="254" autocomplete="email" class="w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="vous@exemple.fr">
+        </div>
+       </div>
+       <div>
+        <label for="simple-contact-message" class="mb-1 block text-xs font-semibold text-gray-700">Votre message *</label>
+        <textarea id="simple-contact-message" name="message_contact" rows="4" required maxlength="3000" class="w-full resize-y rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+       </div>
+       <button type="submit" class="w-full rounded-xl bg-secondary px-5 py-3 font-bold text-white shadow transition hover:bg-amber-600"><i class="fa-solid fa-paper-plane mr-2"></i>Envoyer mon message</button>
+      </form>
+     </div>
     </div>
    </div>
   </main>
