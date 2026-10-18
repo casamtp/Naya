@@ -481,23 +481,32 @@
   </footer>
   <!-- Script de Navigation Multi-pages JS -->
   <script>
-        function navigate(pageId) {
-            document.querySelectorAll('.page-content').forEach(page => {
-                page.classList.remove('active');
-            });
+        const nmPageHistory = [];
+        let nmCurrentPage = 'accueil';
+        function navigate(pageId, addHistory = true) {
             const target = document.getElementById('page-' + pageId);
-            if (target) {
-                target.classList.add('active');
-            }
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('border-secondary', 'text-secondary');
-            });
+            if (!target) return;
+            if (addHistory && nmCurrentPage !== pageId) nmPageHistory.push(nmCurrentPage);
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            target.classList.add('active');
+            nmCurrentPage = pageId;
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('border-secondary', 'text-secondary'));
             const activeNav = document.getElementById('nav-' + pageId);
-            if (activeNav) {
-                activeNav.classList.add('border-secondary', 'text-secondary');
-            }
+            if (activeNav) activeNav.classList.add('border-secondary', 'text-secondary');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        function nmGoBack() {
+            if (document.getElementById('nmDrawer')?.classList.contains('open')) {
+                nmClose();
+                return;
+            }
+            const previous = nmPageHistory.pop();
+            if (previous) navigate(previous, false);
+            else if (nmCurrentPage !== 'accueil') navigate('accueil', false);
+        }
+        window.addEventListener('popstate', () => {
+            nmGoBack();
+        });
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -507,7 +516,7 @@
         navigate('accueil');
     </script>
  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <button type="button" class="nm-fab" onclick="nmOpen()">🛒 Panier (<span id="nmCount">0</span>)</button><div class="nm-overlay" id="nmOverlay" onclick="nmClose()"></div><aside class="nm-drawer" id="nmDrawer"><div class="p-5 border-b flex justify-between"><h2 class="text-2xl font-extrabold text-primary">Votre panier</h2><button onclick="nmClose()" class="text-3xl">×</button></div><div class="p-5 overflow-y-auto flex-1"><div id="nmItems"><p>Panier vide.</p></div><div class="mt-4 border-t pt-4 space-y-2"><div class="flex justify-between"><span>Sous-total</span><strong id="nmSubtotal">0,00 €</strong></div><div class="flex justify-between"><span>Livraison épicerie</span><strong id="nmShipping">0,00 €</strong></div><div class="flex justify-between text-lg font-extrabold"><span>Total estimé</span><strong id="nmTotal">0,00 €</strong></div></div><p class="nm-info mt-4">Épicerie uniquement : livraison à domicile obligatoire, frais fixes de 4,90 €. Aucun retrait ni point relais n’est proposé.</p><form class="mt-5 space-y-3" onsubmit="nmPrepare(event)"><h3 class="font-bold">Réception de la commande</h3><p class="text-xs text-gray-600">Les plats tajine et poulet se réservent via le formulaire de réservation. L’épicerie est disponible uniquement en livraison à domicile, avec 4,90 € de frais.</p><div id="nmModeLabel" class="nm-info">Mode unique : livraison à domicile obligatoire — frais fixes de 4,90 €.</div><input type="hidden" id="nmMode" value="home"><div id="nmHome"><label class="block text-sm">Adresse de livraison *<input id="nmAddress" required class="mt-1 w-full border rounded p-2" placeholder="N°, rue, code postal, ville"></label></div><label class="block text-sm">Nom et prénom<input id="nmName" required maxlength="120" autocomplete="name" class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Téléphone<input id="nmPhone" type="tel" required maxlength="30" autocomplete="tel" class="mt-1 w-full border rounded p-2" placeholder="06 12 34 56 78"></label><label class="block text-sm">E-mail<input id="nmEmail" type="email" required maxlength="254" autocomplete="email" class="mt-1 w-full border rounded p-2"></label><button class="w-full rounded-lg bg-primary text-white p-3 font-bold">Préparer le récapitulatif</button></form><div id="nmSummaryBox" class="hidden nm-info mt-4"><strong id="nmSummaryTitle">Récapitulatif</strong><textarea id="nmSummary" readonly rows="10" class="w-full mt-2 border rounded p-2 text-xs"></textarea><div class="flex flex-wrap gap-2 mt-2"><button type="button" onclick="nmCopy()" class="bg-gray-200 rounded p-2">Copier le récapitulatif</button><button type="button" id="nmSendRequest" onclick="nmSend()" class="bg-primary text-white rounded p-2">Envoyer la demande</button></div><p id="nmSendStatus" class="text-sm mt-2" role="status"></p></div><div class="mt-5 border-t pt-4"><p class="nm-info">Aucun paiement en ligne n’est activé. La commande est une demande à confirmer par la boutique.</p></div></div></aside><script>
+  <button type="button" class="nm-fab" onclick="nmOpen()">🛒 Panier (<span id="nmCount">0</span>)</button><div class="nm-overlay" id="nmOverlay" onclick="nmClose()"></div><aside class="nm-drawer" id="nmDrawer"><div class="p-5 border-b flex items-center justify-between gap-3"><button type="button" onclick="nmGoBack()" class="shrink-0 rounded-lg border border-amber-200 px-3 py-2 text-sm font-semibold text-primary hover:bg-amber-50" aria-label="Retour à la page précédente">← Retour</button><h2 class="text-xl font-extrabold text-primary">Votre panier</h2><button type="button" onclick="nmClose()" class="shrink-0 text-3xl" aria-label="Fermer le panier">×</button></div><div class="p-5 overflow-y-auto flex-1"><div id="nmItems"><p>Panier vide.</p></div><div class="mt-4 border-t pt-4 space-y-2"><div class="flex justify-between"><span>Sous-total</span><strong id="nmSubtotal">0,00 €</strong></div><div class="flex justify-between"><span>Livraison épicerie</span><strong id="nmShipping">0,00 €</strong></div><div class="flex justify-between text-lg font-extrabold"><span>Total estimé</span><strong id="nmTotal">0,00 €</strong></div></div><p class="nm-info mt-4">Épicerie uniquement : livraison à domicile obligatoire, frais fixes de 4,90 €. Aucun retrait ni point relais n’est proposé.</p><form class="mt-5 space-y-3" onsubmit="nmPrepare(event)"><h3 class="font-bold">Réception de la commande</h3><p class="text-xs text-gray-600">Les plats tajine et poulet se réservent via le formulaire de réservation. L’épicerie est disponible uniquement en livraison à domicile, avec 4,90 € de frais.</p><div id="nmModeLabel" class="nm-info">Mode unique : livraison à domicile obligatoire — frais fixes de 4,90 €.</div><input type="hidden" id="nmMode" value="home"><div id="nmHome"><label class="block text-sm">Adresse de livraison *<input id="nmAddress" required class="mt-1 w-full border rounded p-2" placeholder="N°, rue, code postal, ville"></label></div><label class="block text-sm">Nom et prénom<input id="nmName" required maxlength="120" autocomplete="name" class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Téléphone<input id="nmPhone" type="tel" required maxlength="30" autocomplete="tel" class="mt-1 w-full border rounded p-2" placeholder="06 12 34 56 78"></label><label class="block text-sm">E-mail<input id="nmEmail" type="email" required maxlength="254" autocomplete="email" class="mt-1 w-full border rounded p-2"></label><button class="w-full rounded-lg bg-primary text-white p-3 font-bold">Préparer le récapitulatif</button></form><div id="nmSummaryBox" class="hidden nm-info mt-4"><strong id="nmSummaryTitle">Récapitulatif</strong><textarea id="nmSummary" readonly rows="10" class="w-full mt-2 border rounded p-2 text-xs"></textarea><div class="flex flex-wrap gap-2 mt-2"><button type="button" onclick="nmCopy()" class="bg-gray-200 rounded p-2">Copier le récapitulatif</button><button type="button" id="nmSendRequest" onclick="nmSend()" class="bg-primary text-white rounded p-2">Envoyer la demande</button></div><p id="nmSendStatus" class="text-sm mt-2" role="status"></p></div><div class="mt-5 border-t pt-4"><p class="nm-info">Aucun paiement en ligne n’est activé. La commande est une demande à confirmer par la boutique.</p></div></div></aside><script>
 const NM_SUPABASE_URL = "https://vkmmbgkfpxogscyukvnc.supabase.co";
 const NM_SUPABASE_ANON_KEY = "sb_publishable_Qkwx2u4shOlpC3TjcOpM3A_w-d5nYNZ";
 const nmDbConfigured = !NM_SUPABASE_URL.includes("VOTRE-PROJET") && !NM_SUPABASE_ANON_KEY.includes("VOTRE_CLE");
