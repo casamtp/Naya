@@ -60,7 +60,7 @@
         .group:hover .dropdown-menu { display: block; }
         .dropdown-menu { display: none; }
     
-.nm-add{display:inline-block;background:#d97706;color:#fff;border-radius:.6rem;padding:.45rem .7rem;font-size:.75rem;font-weight:700;margin:.35rem 0}.nm-fab{position:fixed;right:16px;bottom:16px;z-index:70;background:#451a03;color:#fff;border-radius:999px;padding:.85rem 1rem;font-weight:800;box-shadow:0 8px 24px #0003}.nm-overlay{position:fixed;inset:0;background:#0007;z-index:89;display:none}.nm-overlay.open{display:block}.nm-drawer{position:fixed;right:0;top:0;bottom:0;width:min(460px,100vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .2s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0002}.nm-drawer.open{transform:translateX(0)}.nm-row{padding:.8rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:.6rem}.nm-qty button{background:#fef3c7;border-radius:5px;padding:.15rem .5rem;font-weight:bold}.nm-info{padding:.8rem;border-radius:.7rem;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.8rem}
+.nm-add{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;width:100%;min-height:42px;background:#d97706;color:#fff;border:0;border-radius:.6rem;padding:.65rem .85rem;font-size:.875rem;font-weight:700;margin:.45rem 0;cursor:pointer;transition:background .15s,transform .15s}.nm-add:hover{background:#b45309}.nm-add:focus-visible{outline:3px solid #fbbf24;outline-offset:2px}.nm-add:disabled{background:#9ca3af;cursor:not-allowed;opacity:.85}.nm-fab{position:fixed;right:16px;bottom:16px;z-index:70;background:#451a03;color:#fff;border-radius:999px;padding:.85rem 1rem;font-weight:800;box-shadow:0 8px 24px #0003}.nm-overlay{position:fixed;inset:0;background:#0007;z-index:89;display:none}.nm-overlay.open{display:block}.nm-drawer{position:fixed;right:0;top:0;bottom:0;width:min(460px,100vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .2s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0002}.nm-drawer.open{transform:translateX(0)}.nm-row{padding:.8rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:.6rem}.nm-qty button{background:#fef3c7;border-radius:5px;padding:.15rem .5rem;font-weight:bold}.nm-info{padding:.8rem;border-radius:.7rem;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.8rem}
 
 .nm-fab.nm-added{transform:scale(1.04)}
 </style>
@@ -220,16 +220,16 @@
        <p class="text-gray-600 text-sm">Le goût authentique du miel, des amandes et de la fleur d'oranger pour vos pauses gourmandes.</p>
        <div class="space-y-3 bg-amber-50 p-5 rounded-xl border border-amber-200">
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('cornes','Cornes de gazelle',2,'food')">Ajouter</button>
+         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('cornes','Cornes de gazelle',2,'food')">Ajouter au panier</button>
         </div>
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('baklava','Baklava assortiment',1.8,'food')">Ajouter</button>
+         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('baklava','Baklava assortiment',1.8,'food')">Ajouter au panier</button>
         </div>
         <div class="flex justify-between items-center text-sm border-b pb-2">
-         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('makrout','Makrout dattes/miel',1.5,'food')">Ajouter</button>
+         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('makrout','Makrout dattes/miel',1.5,'food')">Ajouter au panier</button>
         </div>
         <div class="flex justify-between items-center text-sm font-bold pt-1 text-primary">
-         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmAdd('plateau','Grand plateau fête',35,'food')">Ajouter</button>
+         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmAdd('plateau','Grand plateau fête',35,'food')">Ajouter au panier</button>
         </div>
        </div>
       </div>
@@ -269,20 +269,20 @@
          <img src="721757600_17891220099539705_7221634884364408683_n.jpg" alt="Tajine Poulet Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
          <div class="flex-grow w-full">
           <div class="flex justify-between font-bold text-base">
-           <span>Poulet</span><span class="text-secondary">11,50 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-poulet','Tajine poulet',11.5,'food')">Ajouter</button>
+           <span>Poulet</span><span class="text-secondary">11,50 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-poulet','Tajine poulet',11.5,'food')">Ajouter au panier</button>
           </div>
           <p class="text-xs text-gray-400 mt-1">Recettes au choix : olives, citrons confits, pommes de terre, carottes, olives, légumes au choix.</p>
          </div>
         </div>
         <div class="border-b border-gray-800 pb-3">
          <div class="flex justify-between font-bold text-base">
-          <span>Kefta</span><span class="text-secondary">8,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-kefta','Tajine kefta',8.9,'food')">Ajouter</button>
+          <span>Kefta</span><span class="text-secondary">8,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-kefta','Tajine kefta',8.9,'food')">Ajouter au panier</button>
          </div>
          <p class="text-xs text-gray-400 mt-0.5">Boulettes, sauce tomate, épices (œuf au choix).</p>
         </div>
         <div class="border-b border-gray-800 pb-3">
          <div class="flex justify-between font-bold text-base">
-          <span>Bœuf</span><span class="text-secondary">11,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-boeuf','Tajine bœuf',11.9,'food')">Ajouter</button>
+          <span>Bœuf</span><span class="text-secondary">11,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-boeuf','Tajine bœuf',11.9,'food')">Ajouter au panier</button>
          </div>
          <p class="text-xs text-gray-400 mt-0.5">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
         </div>
@@ -291,7 +291,7 @@
          <img src="721779216_17891222772539705_6857303555221063488_n.jpg" alt="Tajine Agneau Citron Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
          <div class="flex-grow w-full">
           <div class="flex justify-between font-bold text-base">
-           <span>Agneau</span><span class="text-secondary">12,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-agneau','Tajine agneau',12.9,'food')">Ajouter</button>
+           <span>Agneau</span><span class="text-secondary">12,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-agneau','Tajine agneau',12.9,'food')">Ajouter au panier</button>
           </div>
           <p class="text-xs text-gray-400 mt-1">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
          </div>
