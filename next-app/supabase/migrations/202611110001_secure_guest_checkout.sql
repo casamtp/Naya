@@ -33,6 +33,66 @@ create policy "Public can view active products"
 
 grant select on public.products to anon, authenticated;
 
+-- 2bis. Politiques administrateur : autorisation fondée sur app_metadata,
+-- jamais sur user_metadata modifiable par l'utilisateur.
+drop policy if exists "Admins can read all products" on public.products;
+create policy "Admins can read all products" on public.products
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can insert products" on public.products;
+create policy "Admins can insert products" on public.products
+  for insert to authenticated
+  with check ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can update product stock" on public.products;
+create policy "Admins can update product stock" on public.products
+  for update to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+  with check ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can delete products" on public.products;
+create policy "Admins can delete products" on public.products
+  for delete to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can read orders" on public.orders;
+create policy "Admins can read orders" on public.orders
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can update orders" on public.orders;
+create policy "Admins can update orders" on public.orders
+  for update to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+  with check ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can read order items" on public.order_items;
+create policy "Admins can read order items" on public.order_items
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can read meal reservations" on public.meal_reservations;
+create policy "Admins can read meal reservations" on public.meal_reservations
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can update meal reservations" on public.meal_reservations;
+create policy "Admins can update meal reservations" on public.meal_reservations
+  for update to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+  with check ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Only admins can read analytics events" on public.site_analytics_events;
+create policy "Only admins can read analytics events" on public.site_analytics_events
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "Admins can read stock alerts" on public.stock_alerts;
+create policy "Admins can read stock alerts" on public.stock_alerts
+  for select to authenticated
+  using ((select auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
 -- 3. Pas d'accès direct des visiteurs anonymes aux données de commande.
 -- Les accès admin authentifiés existants sont conservés et restent filtrés par RLS.
 revoke all on table public.orders from anon;
