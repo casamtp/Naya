@@ -26,11 +26,18 @@ function euro(cents: number) {
   return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(cents / 100);
 }
 
+function localDateValue(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function nextFoodDate() {
   const date = new Date();
   date.setDate(date.getDate() + 1);
   if (date.getDay() === 1) date.setDate(date.getDate() + 1);
-  return date.toISOString().slice(0, 10);
+  return localDateValue(date);
 }
 
 export function Storefront({ products }: { products: Product[] }) {
@@ -48,7 +55,7 @@ export function Storefront({ products }: { products: Product[] }) {
   const [address, setAddress] = useState("");
   const [relayCity, setRelayCity] = useState("");
   const [relayName, setRelayName] = useState("");
-  const [pickupDate, setPickupDate] = useState(nextFoodDate());
+  const [pickupDate, setPickupDate] = useState("");
   const [pickupSlot, setPickupSlot] = useState("");
 
   useEffect(() => {
@@ -59,6 +66,7 @@ export function Storefront({ products }: { products: Product[] }) {
       setGroceryCart({});
       setFoodCart({});
     }
+    setPickupDate(nextFoodDate());
     setReady(true);
   }, []);
 
@@ -263,7 +271,7 @@ export function Storefront({ products }: { products: Product[] }) {
             <>
               <h3>Retrait traiteur</h3>
               <div className="form-grid">
-                <label>Date souhaitée<input required type="date" min={nextFoodDate()} value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} /></label>
+                <label>Date souhaitée<input required type="date" min={pickupDate || undefined} value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} /></label>
                 <label>Créneau souhaité<input required placeholder="Ex. 12h00–12h30" maxLength={40} value={pickupSlot} onChange={(e) => setPickupSlot(e.target.value)} /></label>
               </div>
             </>
