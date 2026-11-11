@@ -1,31 +1,645 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Naya Market — Épicerie orientale à Saint-Jean-de-Védas</title>
-    <meta
-      name="description"
-      content="Épices, pâtisseries orientales, couscous et tajines faits maison. 12 Av. de la Libération, Saint-Jean-de-Védas."
-    />
-    <meta property="og:title" content="Naya Market — Épicerie orientale" />
-    <meta
-      property="og:description"
-      content="Pâtisseries, couscous & tajines faits maison à Saint-Jean-de-Védas."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;700&display=swap"
-    />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <script type="module" crossorigin src="./assets/index-BMeTXarN.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-6mKtSIs0.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naya Market | Épicerie Orientale Saint-Jean-de-Védas</title>
+  <meta name="description" content="Découvrez Naya Market, épicerie orientale à Saint-Jean-de-Védas : épices, produits d’épicerie, pâtisseries orientales et plats traiteur sur commande.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#451a03">
+  <link rel="canonical" href="https://casamtp.github.io/Naya/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Naya Market">
+  <meta property="og:title" content="Naya Market | Épicerie orientale à Saint-Jean-de-Védas">
+  <meta property="og:description" content="Épicerie orientale, pâtisseries et traiteur à Saint-Jean-de-Védas.">
+  <meta property="og:url" content="https://casamtp.github.io/Naya/">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GroceryStore",
+    "name": "Naya Market",
+    "url": "https://casamtp.github.io/Naya/",
+    "telephone": "+33767934154",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 Avenue de la Libération",
+      "postalCode": "34430",
+      "addressLocality": "Saint-Jean-de-Védas",
+      "addressCountry": "FR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/nayamarket34/",
+      "https://www.facebook.com/profile.php?id=61582394892234"
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#451a03',
+                        secondary: '#d97706',
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        .oriental-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .group:hover .dropdown-menu { display: block; }
+        .dropdown-menu { display: none; }
+    
+.nm-add{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;width:100%;min-height:42px;background:#d97706;color:#fff;border:0;border-radius:.6rem;padding:.65rem .85rem;font-size:.875rem;font-weight:700;margin:.45rem 0;cursor:pointer;transition:background .15s,transform .15s}.nm-add:hover{background:#b45309}.nm-add:focus-visible{outline:3px solid #fbbf24;outline-offset:2px}.nm-add:disabled{background:#9ca3af;cursor:not-allowed;opacity:.85}.nm-fab{position:fixed;right:16px;bottom:16px;z-index:70;background:#451a03;color:#fff;border-radius:999px;padding:.85rem 1rem;font-weight:800;box-shadow:0 8px 24px #0003}.nm-overlay{position:fixed;inset:0;background:#0007;z-index:89;display:none}.nm-overlay.open{display:block}.nm-drawer{position:fixed;right:0;top:0;bottom:0;width:min(460px,100vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .2s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0002}.nm-drawer.open{transform:translateX(0)}.nm-row{padding:.8rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:.6rem}.nm-qty button{background:#fef3c7;border-radius:5px;padding:.15rem .5rem;font-weight:bold}.nm-info{padding:.8rem;border-radius:.7rem;background:#fffbeb;border:1px solid #fde68a;color:#78350f;font-size:.8rem}
+
+.nm-fabs{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:8px}.nm-fabs .nm-fab{position:static}.nm-fab.nm-added{transform:scale(1.04)}
+.nm-fab.nm-footer-visible,.nm-fabs.nm-footer-visible{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .2s,transform .2s}
+</style>
+ </head>
+ <body class="bg-gray-50 text-gray-800 font-['Inter'] antialiased min-h-screen flex flex-col justify-between">
+  <!-- Top Bar -->
+  <div class="bg-gray-900 text-gray-300 text-xs py-2 hidden md:block oriental-pattern">
+   <div class="container mx-auto px-4 flex justify-between items-center relative z-10">
+    <div>
+     <i class="fa-solid fa-location-dot mr-1 text-secondary"></i> 12 Av. de la Libération, 34430 Saint-Jean-de-Védas
+    </div>
+    <div class="flex space-x-4 items-center">
+     <span><i class="fa-solid fa-phone mr-1 text-secondary"></i> 07 67 93 41 54</span> <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="hover:text-secondary transition"><i class="fa-brands fa-facebook mr-1 text-blue-400"></i> Facebook</a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="hover:text-secondary transition"><i class="fa-brands fa-instagram mr-1 text-pink-400"></i> Instagram</a>
+    </div>
+   </div>
+  </div>
+  <!-- Header / Navbar -->
+  <header class="bg-primary text-white sticky top-0 z-50 shadow-md oriental-pattern">
+   <div class="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
+    <div class="text-xl md:text-2xl font-extrabold tracking-tight cursor-pointer flex items-center gap-2" onclick="navigate('accueil')">
+     <i class="fa-solid fa-basket-shopping text-secondary"></i> Naya<span class="text-secondary">Market</span>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-6 font-semibold items-center text-sm">
+     <button onclick="navigate('accueil')" id="nav-accueil" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">Accueil</button>
+     <!-- Menu déroulant Prestations -->
+     <div class="relative group py-2">
+      <button class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent flex items-center gap-1">📦 Prestations <i class="fa-solid fa-chevron-down text-xs"></i></button>
+      <div class="dropdown-menu absolute top-full left-0 mt-1 w-56 bg-white text-gray-800 rounded-xl shadow-xl border border-gray-100 overflow-hidden">
+       <button onclick="navigate('alimentation')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary border-b border-gray-50 transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-pepper-hot text-secondary"></i> Alimentation Générale</button>
+       <button onclick="navigate('patisseries')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary border-b border-gray-50 transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-cookie-bite text-secondary"></i> Pâtisseries Orientales</button>
+       <button onclick="navigate('traiteur')" class="w-full text-left px-4 py-3 hover:bg-amber-50 hover:text-primary transition text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-bowl-food text-secondary"></i> Couscous &amp; Tajines</button>
+      </div>
+     </div>
+     <button onclick="navigate('acces')" id="nav-acces" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">📍 Accès &amp; Horaires</button>
+     <button onclick="navigate('avis')" id="nav-avis" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">⭐ Avis</button>
+     <button onclick="navigate('contact')" id="nav-contact" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">✉️ Contact &amp; Réservation</button>
+    </nav>
+    <!-- CTA Desktop Directs -->
+    <div class="hidden md:flex items-center gap-2">
+     <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="bg-blue-600 text-white p-2 px-3 rounded-full font-bold shadow hover:opacity-90 transition flex items-center gap-1 text-xs"> <i class="fa-brands fa-facebook"></i> </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white p-2 px-3 rounded-full font-bold shadow hover:opacity-90 transition flex items-center gap-1 text-xs"> <i class="fa-brands fa-instagram"></i> </a> <a href="tel:0767934154" class="bg-secondary hover:bg-amber-600 text-white px-3 py-2 rounded-full font-bold shadow transition flex items-center gap-1 text-xs"> <i class="fa-solid fa-phone"></i> Appeler </a>
+    </div>
+    <!-- Mobile Menu Button -->
+    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl focus:outline-none p-2 rounded-md hover:bg-amber-950 transition"><i class="fa-solid fa-bars"></i></button>
+   </div>
+   <!-- Mobile Nav Menu Drawer -->
+   <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-amber-900 shadow-xl px-4 py-4 space-y-2 oriental-pattern">
+    <button onclick="navigate('accueil'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">🏠 Accueil</button>
+    <div class="py-1 border-t border-amber-900/40">
+     <div class="text-amber-300 px-3 py-1 text-xs uppercase tracking-wider font-bold">📦 Prestations</div>
+     <button onclick="navigate('alimentation'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🛒 Alimentation Générale</button>
+     <button onclick="navigate('patisseries'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🥮 Pâtisseries Orientales</button>
+     <button onclick="navigate('traiteur'); toggleMobileMenu();" class="block w-full text-left py-2 px-6 rounded hover:bg-black/20 text-sm">🥘 Couscous &amp; Tajines</button>
+    </div>
+    <button onclick="navigate('acces'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold border-t border-amber-900/40">📍 Accès &amp; Horaires</button>
+    <button onclick="navigate('avis'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">⭐ Avis Clients</button>
+    <button onclick="navigate('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">✉️ Contact &amp; Réservation</button>
+    <div class="flex gap-2 pt-3 border-t border-amber-900">
+     <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-facebook"></i> Facebook </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="flex-1 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-instagram"></i> Instagram </a> <a href="tel:0767934154" class="flex-1 bg-secondary text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-solid fa-phone"></i> Appeler </a>
+    </div>
+   </div>
+  </header>
+  <!-- Main Content Container (Pages) -->
+  <main class="flex-grow">
+   <!-- PAGE ACCUEIL -->
+   <div id="page-accueil" class="page-content">
+    <!-- HERO SECTION FOND MARRON UNI + MOTIF -->
+    <section class="relative bg-primary text-white py-28 md:py-36 oriental-pattern overflow-hidden">
+     <div class="relative z-20 container mx-auto px-4 text-center flex flex-col items-center">
+      <span class="bg-secondary text-white text-xs md:text-sm font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider inline-block shadow">Épicerie Fine &amp; Produits Orientaux</span>
+      <h1 class="text-3xl md:text-6xl font-black mb-6 leading-tight max-w-4xl">Le meilleur de l'Orient
+       <br>
+       <span class="text-amber-300">à Saint-Jean-de-Védas</span></h1>
+      <p class="text-base md:text-xl mb-8 max-w-2xl font-light text-amber-100">Épices d'exception, produits frais, halva, thés et douceurs artisanales.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md">
+       <button onclick="navigate('alimentation')" class="bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition text-sm">Découvrir nos rayons</button>
+       <a href="tel:0767934154" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition text-sm flex justify-center items-center gap-2"> <i class="fa-solid fa-phone text-secondary"></i> 07 67 93 41 54 </a>
+      </div>
+     </div>
+    </section>
+    <!-- Aperçu rapide des 3 thèmes -->
+    <section class="container mx-auto px-4 py-16 max-w-6xl">
+     <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">Nos Prestations Principales</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div onclick="navigate('alimentation')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-pepper-hot"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Alimentation Générale</h3>
+       <p class="text-gray-600 text-sm mb-4">Épices, huiles, produits frais et olives marinées.</p>
+       <span class="text-secondary font-bold text-sm">Voir les tarifs →</span>
+      </div>
+      <div onclick="navigate('patisseries')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-cookie-bite"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Pâtisseries Orientales</h3>
+       <p class="text-gray-600 text-sm mb-4">Cornes de gazelle, baklavas et makrouts frais.</p>
+       <span class="text-secondary font-bold text-sm">Voir la carte sucrée →</span>
+      </div>
+      <div onclick="navigate('traiteur')" class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition cursor-pointer text-center group">
+       <div class="w-16 h-16 bg-amber-50 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:bg-primary group-hover:text-white transition">
+        <i class="fa-solid fa-bowl-food"></i>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-2">Couscous &amp; Tajines</h3>
+       <p class="text-gray-600 text-sm mb-4">Plats traditionnels mijotés faits maison sur commande.</p>
+       <span class="text-secondary font-bold text-sm">Voir les menus →</span>
+      </div>
+     </div>
+    </section>
+   </div>
+   <!-- PAGE ALIMENTATION -->
+   <div id="page-alimentation" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Alimentation</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+       <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Épices" class="rounded-2xl shadow w-full h-[320px] object-cover">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🛒 Alimentation Générale &amp; Orientale</h2>
+       <p class="text-gray-600 text-sm">Retrouvez tous les indispensables de la cuisine orientale et quotidienne rigoureusement sélectionnés.</p>
+       <ul class="space-y-2 text-sm text-gray-700">
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Épices pures et mélanges authentiques</li>
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Olives fraîches et fromages orientaux</li>
+        <li><i class="fa-solid fa-check text-secondary mr-2"></i> Huiles d'olive de qualité supérieure</li>
+       </ul>
+       <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-sm">
+        <div class="font-bold text-primary mb-2">Indicateurs tarifaires :</div>
+        <div class="flex justify-between border-b pb-1 mb-1">
+         <span>Olives marinées (le kg) — 8,50 €</span><button type="button" class="nm-add" onclick="nmAdd('olives','Olives marinées (1 kg)',8.5,'grocery')">Ajouter au panier</button>
+        </div>
+        <div class="flex justify-between">
+         <span>Huile d'olive (1 L) — 12,00 €</span><button type="button" class="nm-add" onclick="nmAdd('huile-olive','Huile d’olive (1 L)',12,'grocery')">Ajouter au panier</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE PATISSERIES -->
+   <div id="page-patisseries" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Pâtisseries</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="md:w-1/2">
+       <img src="https://images.unsplash.com/photo-1616654160350-f8232c9183cc?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Pâtisseries" class="rounded-2xl shadow w-full h-[320px] object-cover">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🥮 Pâtisseries Orientales</h2>
+       <p class="text-gray-600 text-sm">Le goût authentique du miel, des amandes et de la fleur d'oranger pour vos pauses gourmandes.</p>
+       <div class="space-y-3 bg-amber-50 p-5 rounded-xl border border-amber-200">
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Cornes de Gazelle — 2,00 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('cornes','Cornes de gazelle',2.00,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Baklava assortiment — 1,80 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('baklava','Baklava assortiment',1.80,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between items-center text-sm border-b pb-2">
+         <span>Makrout dattes/miel — 1,50 € / pièce</span><button type="button" class="nm-add" onclick="nmAdd('makrout','Makrout dattes/miel',1.50,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between items-center text-sm font-bold pt-1 text-primary">
+         <span>Grand Plateau Fête — 35,00 €</span><button type="button" class="nm-add" onclick="nmAdd('plateau','Grand plateau fête',35.00,'food')">Ajouter au panier traiteur</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE TRAITEUR -->
+   <div id="page-traiteur" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span>Prestations</span> / <span class="text-primary font-bold">Traiteur</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+      <div class="md:w-1/2">
+       <!-- PREMIERE PHOTO D'ILLUSTRATION : COUSCOUS -->
+       <img src="721332997_17891217477539705_5571069465798370448_n.jpg" alt="Couscous Maison" class="rounded-2xl shadow w-full h-[320px] object-cover" onerror="this.src='https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80'">
+      </div>
+      <div class="md:w-1/2 space-y-4">
+       <h2 class="text-3xl font-extrabold text-primary">🥘 Couscous &amp; Tajines</h2>
+       <p class="text-gray-600 text-sm">Commandez vos plats traditionnels faits maison pour vos repas en famille ou entre amis (48h à l'avance).</p>
+      </div>
+     </div>
+     <!-- Description demandée au-dessus du menu -->
+     <div class="bg-amber-50/70 border border-amber-200/60 p-6 rounded-2xl mb-8 text-center max-w-2xl mx-auto">
+      <h3 class="font-bold text-primary text-lg mb-2">Plats faits maison sur commande</h3>
+      <p class="text-gray-700 text-sm mb-3">Nos plats sont préparés avec des produits frais, des ingrédients de qualité et un véritable savoir faire traditionnel.</p>
+      <p class="text-secondary font-semibold text-sm">Que vous soyez seul ou nombreux, faites vous plaisir 😋</p>
+     </div>
+     <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Section Tajines -->
+      <div class="bg-gray-900 text-white p-6 rounded-2xl oriental-pattern shadow-lg">
+       <h3 class="text-xl font-bold text-secondary mb-4 border-b border-gray-700 pb-2">TAJINES</h3>
+       <div class="space-y-6 text-sm">
+        <!-- Tajine Poulet avec Illustration 2 (Tajine olives) -->
+        <div class="border-b border-gray-800 pb-4 flex flex-col md:flex-row gap-4 items-center">
+         <img src="721757600_17891220099539705_7221634884364408683_n.jpg" alt="Tajine Poulet Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
+         <div class="flex-grow w-full">
+          <div class="flex justify-between font-bold text-base">
+           <span>Poulet</span><span class="text-secondary">11,50 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-poulet','Tajine poulet',11.50,'food')">Ajouter au panier traiteur</button>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Recettes au choix : olives, citrons confits, pommes de terre, carottes, olives, légumes au choix.</p>
+         </div>
+        </div>
+        <div class="border-b border-gray-800 pb-3">
+         <div class="flex justify-between font-bold text-base">
+          <span>Kefta</span><span class="text-secondary">8,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-kefta','Tajine kefta',8.90,'food')">Ajouter au panier traiteur</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-0.5">Boulettes, sauce tomate, épices (œuf au choix).</p>
+        </div>
+        <div class="border-b border-gray-800 pb-3">
+         <div class="flex justify-between font-bold text-base">
+          <span>Bœuf</span><span class="text-secondary">11,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-boeuf','Tajine bœuf',11.90,'food')">Ajouter au panier traiteur</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-0.5">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
+        </div>
+        <!-- Tajine Agneau avec Illustration 3 (Tajine citron olives) -->
+        <div class="pt-1 flex flex-col md:flex-row gap-4 items-center">
+         <img src="721779216_17891222772539705_6857303555221063488_n.jpg" alt="Tajine Agneau Citron Olives" class="w-full md:w-36 h-28 object-cover rounded-xl shadow" onerror="this.style.display='none'">
+         <div class="flex-grow w-full">
+          <div class="flex justify-between font-bold text-base">
+           <span>Agneau</span><span class="text-secondary">12,90 €</span><button type="button" class="nm-add" onclick="nmAdd('tajine-agneau','Tajine agneau',12.90,'food')">Ajouter au panier traiteur</button>
+          </div>
+          <p class="text-xs text-gray-400 mt-1">Recettes au choix : pruneaux/amandes, abricots/amandes, pommes de terre, olives, légumes au choix.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <!-- Section Couscous -->
+      <div class="bg-gray-900 text-white p-6 rounded-2xl oriental-pattern shadow-lg">
+       <h3 class="text-xl font-bold text-secondary mb-4 border-b border-gray-700 pb-2">COUSCOUS</h3>
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Poulet</span> <span class="font-bold text-secondary">11,90 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-poulet','Couscous Poulet',11.90,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Agneau</span> <span class="font-bold text-secondary">13,50 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-agneau','Couscous Agneau',13.50,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Bœuf</span> <span class="font-bold text-secondary">12,00 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-boeuf','Couscous Bœuf',12.00,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Boulettes</span> <span class="font-bold text-secondary">11,00 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-boulettes','Couscous Boulettes',11.00,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Royal</span> <span class="font-bold text-secondary">14,00 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-royal','Couscous Royal',14.00,'food')">Ajouter au panier traiteur</button>
+        </div>
+        <div class="flex justify-between border-b border-gray-800 pb-2">
+         <span>Végétarien</span> <span class="font-bold text-secondary">9,50 €</span><button type="button" class="nm-add" onclick="nmAdd('couscous-vegetarien','Couscous Végétarien',9.50,'food')">Ajouter au panier traiteur</button>
+        </div>
+       </div>
+      </div>
+      <!-- Section Suppléments -->
+      <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-sm">
+       <h4 class="font-bold text-primary mb-3">Suppléments :</h4>
+       <div class="space-y-1.5">
+        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+         <span>Merguez (l'unité)</span> <span class="font-bold text-secondary">1,30 €</span><button type="button" class="nm-add" onclick="nmAdd('supplement-merguez','Supplément Merguez',1.30,'food')">Ajouter</button>
+        </div>
+        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+         <span>Boulette kefta</span> <span class="font-bold text-secondary">1,00 €</span><button type="button" class="nm-add" onclick="nmAdd('supplement-kefta','Supplément Boulette kefta',1.00,'food')">Ajouter</button>
+        </div>
+        <div class="flex justify-between pt-1">
+         <span>Semoule à la vapeur (les 200gr)</span> <span class="font-bold text-secondary">2,30 €</span><button type="button" class="nm-add" onclick="nmAdd('supplement-semoule','Supplément Semoule (200g)',2.30,'food')">Ajouter</button>
+        </div>
+       </div>
+      </div>
+      <div class="text-center pt-2">
+       <button onclick="nmOpen('food')" class="bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 px-8 rounded-xl text-sm transition shadow">Ouvrir le panier traiteur</button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE ACCES & HORAIRES -->
+   <div id="page-acces" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Accès &amp; Horaires</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-6">📍 Accès, Localisation &amp; Horaires</h2>
+     <!-- Horaires : carte premium aux couleurs Naya Market -->
+     <section class="relative overflow-hidden rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 via-white to-orange-50 shadow-xl mb-8">
+      <div class="bg-primary text-white px-6 py-5 md:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 oriental-pattern">
+       <div>
+        <p class="text-amber-300 text-xs font-bold uppercase tracking-[0.18em] mb-1">Bienvenue chez Naya Market</p>
+        <h3 class="text-2xl md:text-3xl font-extrabold"><i class="fa-regular fa-clock text-secondary mr-2"></i>Horaires d’ouverture</h3>
+        <p class="text-amber-100 text-sm mt-1">Organisez votre visite en un coup d’œil</p>
+       </div>
+       <div class="inline-flex items-center gap-2 self-start sm:self-center rounded-full border border-amber-300/40 bg-white/10 px-4 py-2 text-sm font-semibold text-amber-100">
+        <i class="fa-solid fa-location-dot text-secondary"></i> Saint-Jean-de-Védas
+       </div>
+      </div>
+      <div class="p-4 md:p-7">
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="flex items-center justify-between gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+         <span class="font-semibold text-gray-700">Lundi</span><span class="rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-700">Fermé</span>
+        </div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Mardi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Mercredi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Jeudi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Vendredi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="rounded-xl border border-amber-200 bg-white px-4 py-4 shadow-sm"><div class="font-bold text-primary mb-2">Samedi</div><div class="space-y-1 text-sm text-gray-700"><div><i class="fa-regular fa-sun text-secondary w-5"></i>10:00–13:00</div><div><i class="fa-regular fa-moon text-secondary w-5"></i>15:30–19:30</div></div></div>
+        <div class="sm:col-span-2 lg:col-span-3 rounded-xl border border-amber-300 bg-amber-100/70 px-4 py-4">
+         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div class="font-bold text-primary"><i class="fa-solid fa-star text-secondary mr-2"></i>Dimanche</div>
+          <div class="flex flex-wrap gap-2 text-sm"><span class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-gray-800"><i class="fa-regular fa-sun text-secondary mr-2"></i>10:00–12:30</span><span class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-gray-800"><i class="fa-regular fa-moon text-secondary mr-2"></i>16:00–20:00</span></div>
+         </div>
+        </div>
+       </div>
+       <p class="mt-4 text-center text-xs text-gray-500"><i class="fa-solid fa-circle-info text-secondary mr-1"></i>Les horaires peuvent exceptionnellement varier lors des jours fériés.</p>
+      </div>
+     </section>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4 text-sm">
+       <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+        <div class="font-bold text-primary mb-1">
+         <i class="fa-solid fa-tram text-secondary"></i> En Tramway :
+        </div>
+        <p>À seulement <strong>2 minutes à pied</strong> de l'arrêt <strong>Saint-Jean-de-Védas Centre</strong> (Ligne 2).</p>
+       </div>
+       <div>
+        <strong>Adresse :</strong>
+        <br>
+        12 Av. de la Libération, 34430 Saint-Jean-de-Védas
+       </div>
+       <div>
+        <strong>Téléphone :</strong>
+        <br>
+        <a href="tel:0767934154" class="text-secondary font-bold">07 67 93 41 54</a>
+       </div>
+      </div>
+      <div class="h-[300px] rounded-xl overflow-hidden shadow border">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.378772023023!2d3.824285!3d43.578611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6ad0c00000000%3A0x0!2s12%20Av.%20de%20la%20Lib%C3%A9ration%2C%2034430%20Saint-Jean-de-V%C3%A9das!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- PAGE AVIS -->
+   <div id="page-avis" class="page-content container mx-auto px-4 py-12 max-w-5xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Avis</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-6 text-center">⭐ Avis de nos Clients</h2>
+     <div class="max-w-2xl mx-auto mb-8 rounded-xl border border-amber-200 bg-amber-50 p-6 text-center">
+      <p class="font-semibold text-primary mb-2">Les avis clients sont en cours de collecte.</p>
+      <p class="text-sm text-gray-700">Nous publierons ici les témoignages authentiques après vérification. Vous pouvez nous transmettre votre retour via le formulaire ci-dessous.</p>
+     </div>
+     <!-- Formulaire Avis -->
+     <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-xl mx-auto space-y-4 bg-amber-50 p-6 rounded-2xl">
+      <h3 class="font-bold text-primary text-center">Proposer un avis (publication après validation)</h3>
+      <input type="hidden" name="_subject" value="Avis Naya Market">
+      <div class="grid grid-cols-2 gap-4">
+       <input type="text" name="prenom" placeholder="Votre Prénom" required class="w-full p-2 bg-white rounded border text-sm"> <select name="note" class="w-full p-2 bg-white rounded border text-sm"> <option value="5">⭐⭐⭐⭐⭐ Parfait</option> <option value="4">⭐⭐⭐⭐ Très bien</option> </select>
+      </div>
+      <textarea name="commentaire" placeholder="Votre commentaire..." rows="3" required class="w-full p-2 bg-white rounded border text-sm resize-none"></textarea>
+      <button type="submit" class="w-full bg-secondary text-white font-bold py-2 rounded text-sm">Envoyer l'avis</button>
+     </form>
+    </div>
+   </div>
+   <!-- PAGE CONTACT & RÉSERVATION TRAITEUR -->
+   <div id="page-contact" class="page-content container mx-auto px-4 py-12 max-w-4xl">
+    <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+     <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
+     / <span class="text-primary font-bold">Contact &amp; Réservation</span>
+    </div>
+    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
+     <h2 class="text-3xl font-extrabold text-primary mb-2 text-center">✉️ Contact</h2>
+     <p class="text-gray-600 text-sm text-center mb-8">Une question ? Écrivez-nous via ce formulaire.</p>
+     <form action="https://formspree.io/f/xppanznj" method="POST" class="space-y-4">
+      <input type="hidden" name="_subject" value="Nouveau message de contact — Naya Market">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Nom / Prénom *</label> <input type="text" name="nom" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Votre nom">
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Téléphone *</label> <input type="tel" name="telephone" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="07 XX XX XX XX">
+       </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Plat Souhaité (Traiteur)</label> <select name="plat_traiteur" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white"> <option value="Aucun / Question simple">-- Question simple / Autre --</option> <optgroup label="TAJINES"> <option value="Tajine Poulet (11.50€)">Tajine Poulet (11,50 €)</option> <option value="Tajine Kefta (8.90€)">Tajine Kefta (8,90 €)</option> <option value="Tajine Bœuf (11.90€)">Tajine Bœuf (11,90 €)</option> <option value="Tajine Agneau (12.90€)">Tajine Agneau (12,90 €)</option> </optgroup> <optgroup label="COUSCOUS"> <option value="Couscous Poulet (11.90€)">Couscous Poulet (11,90 €)</option> <option value="Couscous Agneau (13.50€)">Couscous Agneau (13,50 €)</option> <option value="Couscous Bœuf (12.00€)">Couscous Bœuf (12,00 €)</option> <option value="Couscous Boulettes (11.00€)">Couscous Boulettes (11,00 €)</option> <option value="Couscous Royal (14.00€)">Couscous Royal (14,00 €)</option> <option value="Couscous Végétarien (9.50€)">Couscous Végétarien (9,50 €)</option> </optgroup> <optgroup label="PÂTISSERIES"> <option value="Cornes de gazelle">Cornes de gazelle</option> <option value="Baklava assortiment">Baklava assortiment</option> <option value="Makrout dattes/miel">Makrout dattes/miel</option> <option value="Grand plateau fête">Grand plateau fête</option> </optgroup> </select>
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre de personnes / parts</label> <input type="number" name="nombre_personnes" min="1" max="100" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Ex: 4 parts">
+       </div>
+       <div>
+        <label class="block text-xs font-semibold text-gray-700 mb-1">Date souhaitée du retrait</label> <input type="date" name="date_retrait" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white">
+       </div>
+      </div>
+      <div>
+       <label class="block text-xs font-semibold text-gray-700 mb-1">Commentaires (ex: sans piment, allergies, recettes au choix, précisions...)</label> <textarea name="commentaire" rows="4" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white resize-none" placeholder="Précisez vos consignes particulières ici..."></textarea>
+      </div>
+      <button type="submit" class="w-full bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-2 mt-4">Envoyer ma demande de réservation <i class="fa-solid fa-paper-plane"></i></button>
+     </form>
+     <div class="mt-8 border-t border-amber-100 pt-8">
+      <div class="mb-5 text-center">
+       <h3 class="text-xl font-extrabold text-primary"><i class="fa-regular fa-envelope text-secondary mr-2"></i>Une question ? Contactez-nous</h3>
+       <p class="mt-2 text-sm text-gray-600">Pour une question générale, utilisez ce formulaire rapide. Pour réserver un plat, utilisez le formulaire ci-dessus.</p>
+      </div>
+      <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-2xl mx-auto space-y-4 rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+       <input type="hidden" name="_subject" value="Message de contact simple — Naya Market">
+       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+         <label for="simple-contact-name" class="mb-1 block text-xs font-semibold text-gray-700">Nom / Prénom *</label>
+         <input id="simple-contact-name" type="text" name="nom_contact" required maxlength="120" autocomplete="name" class="w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="Votre nom">
+        </div>
+        <div>
+         <label for="simple-contact-email" class="mb-1 block text-xs font-semibold text-gray-700">E-mail *</label>
+         <input id="simple-contact-email" type="email" name="email_contact" required maxlength="254" autocomplete="email" class="w-full rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="vous@exemple.fr">
+        </div>
+       </div>
+       <div>
+        <label for="simple-contact-message" class="mb-1 block text-xs font-semibold text-gray-700">Votre message *</label>
+        <textarea id="simple-contact-message" name="message_contact" rows="4" required maxlength="3000" class="w-full resize-y rounded-lg border border-gray-200 bg-white p-3 text-sm focus:border-secondary focus:outline-none focus:ring-2 focus:ring-amber-200" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+       </div>
+       <button type="submit" class="w-full rounded-xl bg-secondary px-5 py-3 font-bold text-white shadow transition hover:bg-amber-600"><i class="fa-solid fa-paper-plane mr-2"></i>Envoyer mon message</button>
+      </form>
+     </div>
+    </div>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-3 border-t border-amber-900 mt-auto oriental-pattern">
+   <div class="container mx-auto px-4 relative z-10 flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-[11px]">
+    <span class="text-gray-500">© 2026 Naya Market</span>
+    <button type="button" onclick="nmLegalOpen('legal')" class="hover:text-white underline underline-offset-2">Mentions légales</button>
+    <button type="button" onclick="nmLegalOpen('privacy')" class="hover:text-white underline underline-offset-2">Protection des données</button>
+    <button type="button" onclick="nmLegalOpen('cookies')" class="hover:text-white underline underline-offset-2">Cookies</button>
+    <button type="button" onclick="nmLegalOpen('sales')" class="hover:text-white underline underline-offset-2">Commandes & CGV</button>
+    <a href="tel:0767934154" class="hover:text-white underline underline-offset-2">07 67 93 41 54</a>
+    <a href="https://www.facebook.com/profile.php?id=61582394892234" target="_blank" rel="noopener noreferrer" aria-label="Facebook Naya Market" class="inline-flex items-center gap-1 hover:text-white"><i class="fa-brands fa-facebook text-blue-400"></i> Facebook</a>
+    <a href="https://www.instagram.com/nayamarket34/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Naya Market" class="inline-flex items-center gap-1 hover:text-white"><i class="fa-brands fa-instagram text-pink-400"></i> Instagram</a>
+   </div>
+  </footer>
+  <div id="nmLegalOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="nmLegalTitle" onclick="if(event.target===this)nmLegalClose()">
+   <section class="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white text-gray-800 shadow-2xl">
+    <header class="flex items-center justify-between gap-3 border-b border-amber-100 bg-primary px-4 py-3 text-white">
+     <h2 id="nmLegalTitle" class="font-bold text-sm sm:text-base">Informations</h2>
+     <button type="button" onclick="nmLegalClose()" aria-label="Fermer la fenêtre" class="rounded px-3 py-1 text-lg hover:bg-white/15">×</button>
+    </header>
+    <div id="nmLegalContent" class="overflow-y-auto p-4 text-sm leading-relaxed sm:p-6"></div>
+   </section>
+  </div>
+  <script>
+   const nmLegalTexts = {
+    legal: {title:'Mentions légales', html:`<div class="space-y-3"><p><strong>Éditeur :</strong> NAYA MARKET, SASU au capital de 1 000 €.</p><p><strong>Siège social :</strong> 12 avenue de la Libération, 34430 Saint-Jean-de-Védas, France.</p><p><strong>SIREN :</strong> 989 346 176 · <strong>SIRET :</strong> 989 346 176 00013 · <strong>RCS :</strong> Montpellier 989 346 176.</p><p><strong>TVA intracommunautaire :</strong> FR45 989346176.</p><p><strong>Présidente :</strong> Samya BOUCHRIT-BENEKAA.</p><p><strong>Téléphone :</strong> <a class="text-amber-700 underline" href="tel:0767934154">07 67 93 41 54</a>.</p><p><strong>E-mail :</strong> à ajouter avant publication définitive.</p><p><strong>Hébergement :</strong> GitHub Pages (GitHub, Inc.). Les coordonnées complètes de l’hébergeur restent à confirmer.</p><p><strong>Directeur de publication :</strong> à confirmer.</p></div>`},
+    privacy: {title:'Protection des données personnelles', html:`<div class="space-y-3"><p>Les informations saisies dans les formulaires (nom, coordonnées, message, réservation ou livraison) servent à répondre aux demandes, traiter les commandes et assurer le suivi client.</p><p><strong>Prestataires techniques :</strong> les formulaires et commandes peuvent être traités par Formspree et Supabase. Ces prestataires traitent certaines données pour fournir leurs services.</p><p><strong>Conservation :</strong> les données doivent être conservées uniquement pendant la durée nécessaire aux finalités et aux obligations légales. La durée exacte doit être définie par Naya Market selon les données réellement conservées.</p><p><strong>Vos droits :</strong> selon la réglementation applicable, vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou vous opposer à certains traitements, et déposer une réclamation auprès de la CNIL.</p><p><strong>Contact pour exercer vos droits :</strong> adresse e-mail à ajouter avant publication définitive.</p><p>Cette notice doit être adaptée aux traitements réellement effectués, aux durées de conservation et aux contrats des prestataires.</p></div>`},
+    cookies: {title:'Cookies et traceurs', html:`<div class="space-y-3"><p>Les cookies et traceurs peuvent servir à mémoriser des choix, mesurer l’audience ou activer des fonctions tierces. Les traceurs soumis au consentement ne doivent être déposés ou lus qu’après un choix valable de l’utilisateur.</p><p>Le site comporte des liens vers Facebook et Instagram et utilise des services techniques externes. Un lien externe seul ne signifie pas nécessairement qu’un cookie du réseau concerné est déposé sur cette page.</p><p>La configuration réelle des cookies doit être vérifiée. Si des traceurs soumis au consentement sont utilisés, un bandeau doit permettre de les accepter, de les refuser aussi simplement et de modifier son choix ultérieurement.</p><p>La configuration du navigateur peut également servir à gérer les cookies, sans remplacer le consentement légalement requis.</p></div>`},
+    sales: {title:'Commandes, livraison et conditions de vente', html:`<div class="space-y-3"><p>Les prix affichés sont en euros. Pour les produits d’épicerie, le site prévoit une livraison à domicile avec des frais fixes de 4,90 €. Les plats et réservations utilisent le formulaire dédié.</p><p>Une demande en ligne peut nécessiter une confirmation par la boutique. Aucun paiement en ligne n’est actuellement annoncé comme activé ; une demande ne doit pas être considérée comme acceptée avant confirmation de Naya Market.</p><p>Avant de prendre des commandes en ligne, les conditions générales de vente doivent être complétées : processus de commande, paiement, livraison, réclamations, garanties légales et règles de rétractation ou exceptions applicables aux denrées périssables.</p></div>`}
+   };
+   function nmLegalOpen(key){const item=nmLegalTexts[key];if(!item)return;document.getElementById('nmLegalTitle').textContent=item.title;document.getElementById('nmLegalContent').innerHTML=item.html;const overlay=document.getElementById('nmLegalOverlay');overlay.classList.remove('hidden');overlay.classList.add('flex');document.body.style.overflow='hidden';}
+   function nmLegalClose(){const overlay=document.getElementById('nmLegalOverlay');overlay.classList.add('hidden');overlay.classList.remove('flex');document.body.style.overflow='';}
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')nmLegalClose()});
+  </script>  <!-- Script de Navigation Multi-pages JS -->
+  <script>
+        let nmCurrentPage = 'accueil';
+        let nmIgnoreNextPop = false;
+        function navigate(pageId, addHistory = true) {
+            const target = document.getElementById('page-' + pageId);
+            if (!target) return;
+            if (addHistory && nmCurrentPage !== pageId) {
+                history.pushState({ nmPage: pageId, nmCartOpen: false }, '', '#'+pageId);
+            }
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            target.classList.add('active');
+            nmCurrentPage = pageId;
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('border-secondary', 'text-secondary'));
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) activeNav.classList.add('border-secondary', 'text-secondary');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function nmGoBack() {
+            if (history.state && history.state.nmCartOpen) {
+                history.back();
+                return;
+            }
+            if (history.state && history.state.nmPage && history.state.nmPage !== 'accueil') {
+                history.back();
+                return;
+            }
+            if (nmCurrentPage !== 'accueil') {
+                navigate('accueil', true);
+                return;
+            }
+            if (document.getElementById('nmDrawer')?.classList.contains('open')) nmClose();
+        }
+        window.addEventListener('popstate', (event) => {
+            const state = event.state || {};
+            const drawer = document.getElementById('nmDrawer');
+            const overlay = document.getElementById('nmOverlay');
+            if (drawer && overlay) {
+                drawer.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+            if (state.nmPage && document.getElementById('page-' + state.nmPage)) {
+                navigate(state.nmPage, false);
+            } else if (nmCurrentPage !== 'accueil') {
+                navigate('accueil', false);
+            }
+        });
+        history.replaceState({ nmPage: 'accueil', nmCartOpen: false }, '', location.pathname + location.search);
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        navigate('accueil');
+    </script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <div class="nm-fabs" id="nmFabGroup">
+  <button type="button" class="nm-fab" onclick="nmOpen('grocery')">🛒 Mon panier (<span id="nmTotalCount">0</span>)</button>
+ </div>
+ <div class="nm-overlay" id="nmOverlay" onclick="nmClose()"></div>
+ <aside class="nm-drawer" id="nmDrawer">
+  <div class="p-5 border-b flex items-center justify-between gap-3"><button type="button" onclick="nmGoBack()" class="shrink-0 rounded-lg border border-amber-200 px-3 py-2 text-sm font-semibold text-primary hover:bg-amber-50" aria-label="Retour à la page précédente">← Retour</button><h2 class="text-xl font-extrabold text-primary" id="nmDrawerTitle">Mon panier</h2><button type="button" onclick="nmClose()" class="shrink-0 text-3xl" aria-label="Fermer le panier">×</button></div>
+  <div class="px-5 pt-4 flex gap-2"><button type="button" id="nmGroceryTab" onclick="nmSwitchCart('grocery')" class="rounded-lg px-4 py-2 text-sm font-bold bg-amber-100 text-primary">Épicerie (<span id="nmGroceryCount">0</span>)</button><button type="button" id="nmFoodTab" onclick="nmSwitchCart('food')" class="rounded-lg px-4 py-2 text-sm font-bold bg-gray-100 text-gray-700">Traiteur (<span id="nmFoodCount">0</span>)</button></div>
+  <div class="p-5 overflow-y-auto flex-1">
+   <div id="nmItems"><p>Panier vide.</p></div>
+   <div class="mt-4 border-t pt-4 space-y-2"><div class="flex justify-between"><span>Sous-total</span><strong id="nmSubtotal">0,00 €</strong></div><div class="flex justify-between" id="nmShippingRow"><span>Livraison épicerie</span><strong id="nmShipping">0,00 €</strong></div><div class="flex justify-between text-lg font-extrabold"><span>Total estimé</span><strong id="nmTotal">0,00 €</strong></div></div>
+   <p class="nm-info mt-4" id="nmBasketInfo">Épicerie : livraison à domicile obligatoire, frais fixes de 4,90 €.</p>
+   <form id="nmCheckoutForm" class="mt-5 space-y-3" onsubmit="nmPrepare(event)">
+    <h3 class="font-bold" id="nmCheckoutTitle">Réception de la commande</h3>
+    <div id="nmGroceryFields"><label class="block text-sm">Adresse de livraison *<input id="nmAddress" required class="mt-1 w-full border rounded p-2" placeholder="N°, rue, code postal, ville"></label></div>
+    <div id="nmFoodFields" class="hidden space-y-3"><label class="block text-sm">Date de retrait *<input id="nmPickupDate" type="date" class="mt-1 w-full border rounded p-2"></label><label class="block text-sm">Créneau souhaité *<input id="nmPickupSlot" type="text" maxlength="40" class="mt-1 w-full border rounded p-2" placeholder="Ex. 12h30"></label><p class="text-xs text-gray-600">Le retrait est proposé à partir de la date autorisée par la boutique. La date sera vérifiée lors de l’enregistrement.</p></div>
+    <label class="block text-sm">Nom et prénom<input id="nmName" required maxlength="120" autocomplete="name" class="mt-1 w-full border rounded p-2"></label>
+    <label class="block text-sm">Téléphone<input id="nmPhone" type="tel" required maxlength="30" autocomplete="tel" class="mt-1 w-full border rounded p-2" placeholder="06 12 34 56 78"></label>
+    <label class="block text-sm">E-mail<input id="nmEmail" type="email" required maxlength="254" autocomplete="email" class="mt-1 w-full border rounded p-2"></label>
+    <button class="w-full rounded-lg bg-primary text-white p-3 font-bold">Préparer le récapitulatif</button>
+   </form>
+   <div id="nmSummaryBox" class="hidden nm-info mt-4"><strong id="nmSummaryTitle">Récapitulatif</strong><textarea id="nmSummary" readonly rows="10" class="w-full mt-2 border rounded p-2 text-xs"></textarea><div class="flex flex-wrap gap-2 mt-2"><button type="button" onclick="nmCopy()" class="bg-gray-200 rounded p-2">Copier le récapitulatif</button><button type="button" id="nmSendRequest" onclick="nmSend()" class="bg-primary text-white rounded p-2">Enregistrer la commande</button></div><p id="nmSendStatus" class="text-sm mt-2" role="status"></p></div>
+   <div class="mt-5 border-t pt-4"><p class="nm-info">Aucun paiement en ligne n’est activé. La commande est une demande à confirmer par la boutique.</p></div>
+  </div>
+ </aside><script>
+const NM_SUPABASE_URL = "https://vkmmbgkfpxogscyukvnc.supabase.co";
+const NM_SUPABASE_ANON_KEY = "sb_publishable_Qkwx2u4shOlpC3TjcOpM3A_w-d5nYNZ";
+const nmDbConfigured = !NM_SUPABASE_URL.includes("VOTRE-PROJET") && !NM_SUPABASE_ANON_KEY.includes("VOTRE_CLE");
+const nmDb = nmDbConfigured && window.supabase ? window.supabase.createClient(NM_SUPABASE_URL, NM_SUPABASE_ANON_KEY) : null;
+const nmCarts = {grocery:{},food:{}}, nmCatalog = {};
+let nmActiveCart = 'grocery';
+const nmEur = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n);
+function nmTomorrow(){const d=new Date();d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function nmFoodPickupDate(){const d=new Date();d.setDate(d.getDate()+1);if(d.getDay()===1)d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function nmSlug(name){return name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+async function nmLoadCatalog(){if(!nmDb)return;const {data,error}=await nmDb.from('products').select('id,slug,name,category,price_cents,stock_quantity,is_active').eq('is_active',true);if(error){console.error('Supabase catalogue:',error);return}Object.keys(nmCatalog).forEach(k=>delete nmCatalog[k]);data.forEach(p=>{const kind=['traiteur','tajine','couscous','patisserie','patisseries'].includes(String(p.category||'').toLowerCase())?'food':'grocery';const slug=p.slug||nmSlug(p.name);nmCatalog[slug]={...p,slug,price:p.price_cents/100,stock:p.stock_quantity,active:p.is_active,kind}});nmRender();document.querySelectorAll('.nm-add').forEach(b=>{const m=b.getAttribute('onclick')?.match(/nmAdd\('([^']+)'/);if(m){const p=nmCatalog[m[1]];if(p){b.disabled=p.stock<=0;b.textContent=p.stock<=0?'Épuisé':'Ajouter au panier';b.title=`Stock disponible : ${p.stock}`}}})}
+async function nmAdd(id,name,price,kind){if(!nmDb){alert('La base de données n’est pas configurée.');return}if(!nmCatalog[id])await nmLoadCatalog();const p=nmCatalog[id];if(!p||!p.active){alert('Article absent du catalogue Supabase. Vérifiez le nom du produit.');return}const cart=p.kind==='food'?nmCarts.food:nmCarts.grocery;const q=cart[id]?.qty||0;if(p.stock<=q){alert(p.stock<=0?'Article épuisé.':`Stock disponible : ${p.stock}`);return}if(cart[id])cart[id].qty++;else cart[id]={id:p.id,slug:id,name:p.name,price:Number(p.price),kind:p.kind,qty:1};nmRender()}
+function nmQty(id,d){const cart=nmCarts[nmActiveCart];if(!cart[id])return;const next=cart[id].qty+d;const slug=cart[id].slug;if(next>(nmCatalog[slug]?.stock??0)){alert('Stock insuffisant.');return}cart[id].qty=next;if(cart[id].qty<1)delete cart[id];nmRender()}
+function nmSwitchCart(kind){nmActiveCart=kind==='food'?'food':'grocery';nmRender()}
+function nmOpen(kind='grocery'){nmActiveCart=kind==='food'?'food':'grocery';nmRender();if(nmDrawer.classList.contains('open'))return;nmDrawer.classList.add('open');nmOverlay.classList.add('open');history.pushState({nmPage:nmCurrentPage,nmCartOpen:true},'','#panier')}
+function nmClose(){if(!nmDrawer.classList.contains('open'))return;nmDrawer.classList.remove('open');nmOverlay.classList.remove('open');if(history.state&&history.state.nmCartOpen)history.back()}
+function nmTotals(){const items=Object.values(nmCarts[nmActiveCart]),sub=items.reduce((s,p)=>s+p.price*p.qty,0),grocery=nmActiveCart==='grocery',shipping=grocery&&items.length?4.9:0;return{items,sub,shipping,total:sub+shipping,grocery,food:!grocery}}
+function nmRender(){const t=nmTotals();const groceryCount=Object.values(nmCarts.grocery).reduce((s,p)=>s+p.qty,0),foodCount=Object.values(nmCarts.food).reduce((s,p)=>s+p.qty,0);nmGroceryCount.textContent=groceryCount;nmFoodCount.textContent=foodCount;const totalCount=groceryCount+foodCount;const totalNode=document.getElementById('nmTotalCount');if(totalNode)totalNode.textContent=totalCount;nmDrawerTitle.textContent='Mon panier';const groceryTab=document.getElementById('nmGroceryTab'),foodTab=document.getElementById('nmFoodTab');if(groceryTab){groceryTab.className=nmActiveCart==='grocery'?'rounded-lg px-4 py-2 text-sm font-bold bg-amber-100 text-primary':'rounded-lg px-4 py-2 text-sm font-bold bg-gray-100 text-gray-700'}if(foodTab){foodTab.className=nmActiveCart==='food'?'rounded-lg px-4 py-2 text-sm font-bold bg-amber-100 text-primary':'rounded-lg px-4 py-2 text-sm font-bold bg-gray-100 text-gray-700'}nmCheckoutTitle.textContent=t.food?'Réserver les plats':'Réception de la commande';nmBasketInfo.textContent=t.food?'Traiteur : retrait en boutique, à la date et au créneau souhaités.':'Épicerie : livraison à domicile obligatoire, frais fixes de 4,90 €.';nmGroceryFields.classList.toggle('hidden',t.food);nmFoodFields.classList.toggle('hidden',!t.food);nmAddress.required=!t.food;nmPickupDate.required=t.food;nmPickupSlot.required=t.food;nmPickupDate.min=nmFoodPickupDate();nmShippingRow.classList.toggle('hidden',t.food);nmShipping.textContent=nmEur(t.shipping);nmItems.innerHTML=t.items.length?t.items.map(p=>`<div class="nm-row"><div><strong>${p.name}</strong><div>${nmEur(p.price)} / unité</div><div class="text-xs text-gray-500">Stock : ${nmCatalog[p.slug]?.stock??'à vérifier'}</div><div class="nm-qty"><button type="button" onclick="nmQty('${p.slug}',-1)">−</button> ${p.qty} <button type="button" onclick="nmQty('${p.slug}',1)">+</button></div></div><strong>${nmEur(p.price*p.qty)}</strong></div>`).join(''):'<p>Votre panier est vide.</p>';nmSubtotal.textContent=nmEur(t.sub);nmTotal.textContent=nmEur(t.total);if(!t.items.length){nmSummaryBox.classList.add('hidden');nmSendStatus.textContent=''}}
+function nmPrepare(e){e.preventDefault();const t=nmTotals();if(!nmDb){alert('Base de données non configurée.');return}if(!t.items.length){alert('Ajoutez un article.');return}if(t.grocery&&!nmAddress.value.trim()){alert('Indiquez l’adresse de livraison.');return}if(t.food&&(!nmPickupDate.value||!nmPickupSlot.value.trim())){alert('Indiquez la date et le créneau de retrait.');return}const reception=t.food?`Retrait : ${nmPickupDate.value} — ${nmPickupSlot.value.trim()}`:`Livraison à domicile — supplément 4,90 €\nAdresse : ${nmAddress.value.trim()}`;nmSummary.value=['NAYA MARKET — '+(t.food?'COMMANDE TRAITEUR':'COMMANDE ÉPICERIE'),'Nom : '+nmName.value,'Téléphone : '+nmPhone.value,'E-mail : '+nmEmail.value,reception,...t.items.map(p=>`${p.qty} × ${p.name} : ${nmEur(p.qty*p.price)}`),'Sous-total : '+nmEur(t.sub),'Frais de livraison : '+nmEur(t.shipping),'Total indicatif : '+nmEur(t.total),'Commande en attente de confirmation. Aucun paiement encaissé.'].filter(Boolean).join('\n');nmSummaryTitle.textContent='Récapitulatif';nmSendRequest.textContent='Enregistrer la commande';nmSendStatus.textContent='';nmSummaryBox.classList.remove('hidden')}
+async function nmSend(){const btn=nmSendRequest,status=nmSendStatus;if(!nmDb){status.textContent='Base de données non configurée.';return}btn.disabled=true;btn.textContent='Enregistrement…';try{const t=nmTotals();const {data,error}=await nmDb.rpc('create_customer_order',{p_customer_name:nmName.value.trim(),p_customer_email:nmEmail.value.trim(),p_customer_phone:nmPhone.value.trim(),p_mode:t.food?'pickup':'home',p_items:t.items.map(p=>({id:p.id,qty:p.qty})),p_address:t.food?null:nmAddress.value.trim(),p_relay_city:null,p_relay_name:null,p_pickup_date:t.food?nmPickupDate.value:null,p_pickup_slot:t.food?nmPickupSlot.value.trim():null});if(error)throw error;status.textContent=`Commande enregistrée : ${data.order_number}. En attente de confirmation par la boutique.`;status.className='text-sm mt-2 text-green-700';btn.textContent='Commande enregistrée';Object.keys(nmCarts[nmActiveCart]).forEach(k=>delete nmCarts[nmActiveCart][k]);await nmLoadCatalog();nmRender()}catch(err){console.error(err);const msg=String(err.message||'');status.textContent=msg.includes('STOCK_INSUFFICIENT')?'Stock insuffisant : la commande n’a pas été enregistrée.':msg.includes('PICKUP_MUST_BE_TOMORROW')?'La date de retrait doit respecter le délai de préparation indiqué.':msg.includes('PICKUP_SLOT_REQUIRED')?'Indique un créneau de retrait.':'Échec de l’enregistrement. Vérifie les champs et la configuration Supabase.';status.className='text-sm mt-2 text-red-700';btn.disabled=false;btn.textContent='Réessayer'}}
+async function nmCopy(){try{await navigator.clipboard.writeText(nmSummary.value);alert('Récapitulatif copié.')}catch(e){nmSummary.select();document.execCommand('copy')}}
+nmRender();nmLoadCatalog();
+// Masquer le bouton flottant du panier lorsque le pied de page est visible,
+// afin qu'il ne recouvre pas les liens légaux ou les réseaux sociaux.
+(function(){
+  const footer=document.querySelector('footer');
+  const cartButton=document.querySelector('.nm-fabs');
+  if(!footer||!cartButton||!('IntersectionObserver' in window)) return;
+  const footerObserver=new IntersectionObserver(entries=>{
+    cartButton.classList.toggle('nm-footer-visible',entries.some(entry=>entry.isIntersecting));
+  },{threshold:0.01});
+  footerObserver.observe(footer);
+})();
+</script>
+</body>
 </html>
