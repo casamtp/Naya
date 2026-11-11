@@ -98,7 +98,7 @@
      </div>
      <button onclick="navigate('acces')" id="nav-acces" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">📍 Accès &amp; Horaires</button>
      <button onclick="navigate('avis')" id="nav-avis" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">⭐ Avis</button>
-     <button onclick="navigate('contact')" id="nav-contact" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">✉️ Contact &amp; Réservation</button>
+     <button onclick="navigate('contact')" id="nav-contact" class="nav-btn transition hover:text-secondary py-1 border-b-2 border-transparent">✉️ Contact</button>
     </nav>
     <!-- CTA Desktop Directs -->
     <div class="hidden md:flex items-center gap-2">
@@ -118,7 +118,7 @@
     </div>
     <button onclick="navigate('acces'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold border-t border-amber-900/40">📍 Accès &amp; Horaires</button>
     <button onclick="navigate('avis'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">⭐ Avis Clients</button>
-    <button onclick="navigate('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">✉️ Contact &amp; Réservation</button>
+    <button onclick="navigate('contact'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded hover:bg-black/20 font-semibold">✉️ Contact</button>
     <div class="flex gap-2 pt-3 border-t border-amber-900">
      <a href="https://www.facebook.com/profile.php?id=61582394892234&amp;locale=fr_FR#" target="_blank" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-facebook"></i> Facebook </a> <a href="https://www.instagram.com/nayamarket34/?hl=fr" target="_blank" class="flex-1 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-700 text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-brands fa-instagram"></i> Instagram </a> <a href="tel:0767934154" class="flex-1 bg-secondary text-white py-2.5 rounded-lg text-center font-bold text-xs flex justify-center items-center gap-1"> <i class="fa-solid fa-phone"></i> Appeler </a>
     </div>
@@ -417,23 +417,25 @@
     </div>
     <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
      <h2 class="text-3xl font-extrabold text-primary mb-6 text-center">⭐ Avis de nos Clients</h2>
-     <div class="max-w-2xl mx-auto mb-8 rounded-xl border border-amber-200 bg-amber-50 p-6 text-center">
-      <p class="font-semibold text-primary mb-2">Les avis clients sont en cours de collecte.</p>
-      <p class="text-sm text-gray-700">Nous publierons ici les témoignages authentiques après vérification. Vous pouvez nous transmettre votre retour via le formulaire ci-dessous.</p>
-     </div>
-     <!-- Formulaire Avis -->
-     <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-xl mx-auto space-y-4 bg-amber-50 p-6 rounded-2xl">
-      <h3 class="font-bold text-primary text-center">Proposer un avis (publication après validation)</h3>
-      <input type="hidden" name="_subject" value="Avis Naya Market">
-      <div class="grid grid-cols-2 gap-4">
-       <input type="text" name="prenom" placeholder="Votre Prénom" required class="w-full p-2 bg-white rounded border text-sm"> <select name="note" class="w-full p-2 bg-white rounded border text-sm"> <option value="5">⭐⭐⭐⭐⭐ Parfait</option> <option value="4">⭐⭐⭐⭐ Très bien</option> </select>
+     <section class="max-w-2xl mx-auto mb-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8 text-center" aria-labelledby="google-reviews-title">
+      <div class="text-3xl mb-2" aria-hidden="true">⭐ ⭐ ⭐ ⭐ ⭐</div>
+      <h3 id="google-reviews-title" class="text-xl font-extrabold text-primary mb-2">Les avis Google de Naya Market</h3>
+      <p class="text-4xl font-black text-primary">5,0<span class="text-lg font-semibold">/5</span></p>
+      <p class="text-sm text-gray-700 mt-1 mb-5">39 avis publiés sur Google</p>
+      <p class="text-sm text-gray-700 mb-5">Retrouvez les témoignages authentiques directement sur notre fiche Google. Les avis sont consultés sur Google et ne sont pas recopiés ici.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+       <a href="https://www.google.com/maps/search/?api=1&amp;query=Naya%20Market%20Saint-Jean-de-V%C3%A9das&amp;query_place_id=ChIJiV4WZ9qvthIRLC3jZGW6pUE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow hover:bg-amber-950">
+        <i class="fa-brands fa-google"></i> Lire les avis Google
+       </a>
+       <a href="https://search.google.com/local/writereview?placeid=ChIJiV4WZ9qvthIRLC3jZGW6pUE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl border border-primary px-5 py-3 text-sm font-bold text-primary hover:bg-white">
+        <i class="fa-regular fa-star"></i> Laisser un avis
+       </a>
       </div>
-      <textarea name="commentaire" placeholder="Votre commentaire..." rows="3" required class="w-full p-2 bg-white rounded border text-sm resize-none"></textarea>
-      <button type="submit" class="w-full bg-secondary text-white font-bold py-2 rounded text-sm">Envoyer l'avis</button>
-     </form>
+      <p class="mt-4 text-xs text-gray-500">Note et nombre d’avis relevés sur la fiche Google le 11 novembre 2026 ; ils peuvent évoluer.</p>
+     </section>
     </div>
    </div>
-   <!-- PAGE CONTACT & RÉSERVATION TRAITEUR -->
+   <!-- PAGE CONTACT -->
    <div id="page-contact" class="page-content container mx-auto px-4 py-12 max-w-4xl">
     <div class="flex items-center gap-2 text-xs text-gray-500 mb-6">
      <button onclick="navigate('accueil')" class="hover:underline">Accueil</button>
@@ -442,36 +444,26 @@
     <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-gray-100">
      <h2 class="text-3xl font-extrabold text-primary mb-2 text-center">✉️ Contact</h2>
      <p class="text-gray-600 text-sm text-center mb-8">Une question ? Écrivez-nous via ce formulaire.</p>
-     <form action="https://formspree.io/f/xppanznj" method="POST" class="space-y-4">
-      <input type="hidden" name="_subject" value="Nouveau message de contact — Naya Market">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-       <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Nom / Prénom *</label> <input type="text" name="nom" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Votre nom">
-       </div>
-       <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Téléphone *</label> <input type="tel" name="telephone" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="07 XX XX XX XX">
-       </div>
+     <section class="max-w-2xl mx-auto mb-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8 text-center" aria-labelledby="google-reviews-title">
+      <div class="text-3xl mb-2" aria-hidden="true">⭐ ⭐ ⭐ ⭐ ⭐</div>
+      <h3 id="google-reviews-title" class="text-xl font-extrabold text-primary mb-2">Les avis Google de Naya Market</h3>
+      <p class="text-4xl font-black text-primary">5,0<span class="text-lg font-semibold">/5</span></p>
+      <p class="text-sm text-gray-700 mt-1 mb-5">39 avis publiés sur Google</p>
+      <p class="text-sm text-gray-700 mb-5">Retrouvez les témoignages authentiques directement sur notre fiche Google. Les avis sont consultés sur Google et ne sont pas recopiés ici.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+       <a href="https://www.google.com/maps/search/?api=1&amp;query=Naya%20Market%20Saint-Jean-de-V%C3%A9das&amp;query_place_id=ChIJiV4WZ9qvthIRLC3jZGW6pUE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow hover:bg-amber-950">
+        <i class="fa-brands fa-google"></i> Lire les avis Google
+       </a>
+       <a href="https://search.google.com/local/writereview?placeid=ChIJiV4WZ9qvthIRLC3jZGW6pUE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl border border-primary px-5 py-3 text-sm font-bold text-primary hover:bg-white">
+        <i class="fa-regular fa-star"></i> Laisser un avis
+       </a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-       <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Plat Souhaité (Traiteur)</label> <select name="plat_traiteur" required class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white"> <option value="Aucun / Question simple">-- Question simple / Autre --</option> <optgroup label="TAJINES"> <option value="Tajine Poulet (11.50€)">Tajine Poulet (11,50 €)</option> <option value="Tajine Kefta (8.90€)">Tajine Kefta (8,90 €)</option> <option value="Tajine Bœuf (11.90€)">Tajine Bœuf (11,90 €)</option> <option value="Tajine Agneau (12.90€)">Tajine Agneau (12,90 €)</option> </optgroup> <optgroup label="COUSCOUS"> <option value="Couscous Poulet (11.90€)">Couscous Poulet (11,90 €)</option> <option value="Couscous Agneau (13.50€)">Couscous Agneau (13,50 €)</option> <option value="Couscous Bœuf (12.00€)">Couscous Bœuf (12,00 €)</option> <option value="Couscous Boulettes (11.00€)">Couscous Boulettes (11,00 €)</option> <option value="Couscous Royal (14.00€)">Couscous Royal (14,00 €)</option> <option value="Couscous Végétarien (9.50€)">Couscous Végétarien (9,50 €)</option> </optgroup> <optgroup label="PÂTISSERIES"> <option value="Cornes de gazelle">Cornes de gazelle</option> <option value="Baklava assortiment">Baklava assortiment</option> <option value="Makrout dattes/miel">Makrout dattes/miel</option> <option value="Grand plateau fête">Grand plateau fête</option> </optgroup> </select>
-       </div>
-       <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre de personnes / parts</label> <input type="number" name="nombre_personnes" min="1" max="100" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white" placeholder="Ex: 4 parts">
-       </div>
-       <div>
-        <label class="block text-xs font-semibold text-gray-700 mb-1">Date souhaitée du retrait</label> <input type="date" name="date_retrait" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white">
-       </div>
-      </div>
-      <div>
-       <label class="block text-xs font-semibold text-gray-700 mb-1">Commentaires (ex: sans piment, allergies, recettes au choix, précisions...)</label> <textarea name="commentaire" rows="4" class="w-full p-3 bg-gray-50 rounded-lg border text-sm focus:bg-white resize-none" placeholder="Précisez vos consignes particulières ici..."></textarea>
-      </div>
-      <button type="submit" class="w-full bg-secondary hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-2 mt-4">Envoyer ma demande de réservation <i class="fa-solid fa-paper-plane"></i></button>
-     </form>
+      <p class="mt-4 text-xs text-gray-500">Note et nombre d’avis relevés sur la fiche Google le 11 novembre 2026 ; ils peuvent évoluer.</p>
+     </section>
      <div class="mt-8 border-t border-amber-100 pt-8">
       <div class="mb-5 text-center">
        <h3 class="text-xl font-extrabold text-primary"><i class="fa-regular fa-envelope text-secondary mr-2"></i>Une question ? Contactez-nous</h3>
-       <p class="mt-2 text-sm text-gray-600">Pour une question générale, utilisez ce formulaire rapide. Pour réserver un plat, utilisez le formulaire ci-dessus.</p>
+       <p class="mt-2 text-sm text-gray-600">Pour toute question concernant nos produits, nos plats ou nos services, écrivez-nous ici.</p>
       </div>
       <form action="https://formspree.io/f/xppanznj" method="POST" class="max-w-2xl mx-auto space-y-4 rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
        <input type="hidden" name="_subject" value="Message de contact simple — Naya Market">
